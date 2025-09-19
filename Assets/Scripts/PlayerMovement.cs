@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement Settings")]
     public float moveSpeed = 5f;
+    public float sprintMultiplier = 1.5f;
 
     private Rigidbody2D rb;
     private Animator animator;
@@ -33,10 +34,9 @@ public class PlayerMovement : MonoBehaviour
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
 
-        // Nếu có input cả hai trục -> ưu tiên trục vừa nhấn mạnh hơn
+        // Ưu tiên một hướng nếu nhấn cả hai
         if (x != 0 && y != 0)
         {
-            // Ưu tiên trục được nhấn gần nhất (trục vừa thay đổi)
             if (Mathf.Abs(x) > Mathf.Abs(y))
                 y = 0;
             else
@@ -44,6 +44,12 @@ public class PlayerMovement : MonoBehaviour
         }
 
         movement = new Vector2(x, y);
+
+        // Kiểm tra Shift để tăng tốc
+        if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+        {
+            movement *= sprintMultiplier;
+        }
     }
 
     void MovePlayer()
