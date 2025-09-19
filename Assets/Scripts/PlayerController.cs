@@ -24,17 +24,21 @@ public class PlayerController : MonoBehaviour
 
     void HandleAttack()
     {
-        // Nhấn phím tấn công (ví dụ: J hoặc chuột trái)
         if (Input.GetKeyDown(KeyCode.J) && Time.time >= lastAttackTime + attackCooldown)
         {
             lastAttackTime = Time.time;
-            animator.SetTrigger("Attack");  // gọi animation tấn công
 
-            // Gọi hàm đánh sau 1 chút (nếu muốn sync với animation)
+            // Lấy hướng đánh từ hướng di chuyển cuối
+            float attackX = animator.GetFloat("LastMoveX");
+            float attackY = animator.GetFloat("LastMoveY");
+
+            animator.SetFloat("AttackX", attackX);
+            animator.SetFloat("AttackY", attackY);
+            animator.SetTrigger("Attack");
+
             Invoke(nameof(PerformAttack), 0.1f);
         }
     }
-
     void PerformAttack()
     {
         // Phát hiện enemy trong vùng đòn đánh
