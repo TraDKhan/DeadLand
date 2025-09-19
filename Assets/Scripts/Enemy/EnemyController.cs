@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D), typeof(Animator))]
 public class EnemyController : MonoBehaviour
 {
     public enum EnemyState { Idle, Patrol, Chase }
-    private EnemyState currentState;
 
     [Header("References")]
     public Transform player;
@@ -16,38 +16,67 @@ public class EnemyController : MonoBehaviour
     public float reachThreshold = 0.2f;
     public float stopDistance = 1.5f;
 
+    [Header("Timers")]
+    public float patrolWaitTime = 2f;
+    public float attackCooldown = 1.5f;
+
+    private EnemyState currentState;
+    private IAttackBehavior attackBehavior;
     private Rigidbody2D rb;
-    private int currentPatrolIndex = 0;
+    private Animator animator;
+
+    private int patrolIndex = 0;
+    private float patrolWaitTimer = 0f;
+    private float attackTimer = 0f;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+
         currentState = patrolPoints.Length > 0 ? EnemyState.Patrol : EnemyState.Idle;
+
+        attackBehavior = GetComponent<IAttackBehavior>();
+        if (attackBehavior == null && CompareTag("Ghost"))
+            attackBehavior = new GhostAttack(); // fallback
     }
 
     void Update()
     {
+        attackTimer -= Time.deltaTime;
+
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
 
         switch (currentState)
         {
             case EnemyState.Idle:
-                if (patrolPoints.Length > 0)
-                    ChangeState(EnemyState.Patrol);
-                else if (distanceToPlayer <= detectionRange)
+                if (distanceToPlayer <= detectionRange)
                     ChangeState(EnemyState.Chase);
+                else if (patrolPoints.Length > 0)
+                    ChangeState(EnemyState.Patrol);
                 break;
 
             case EnemyState.Patrol:
-                Patrol();
                 if (distanceToPlayer <= detectionRange)
                     ChangeState(EnemyState.Chase);
                 break;
 
             case EnemyState.Chase:
-                ChasePlayer();
                 if (distanceToPlayer > detectionRange)
                     ChangeState(patrolPoints.Length > 0 ? EnemyState.Patrol : EnemyState.Idle);
+                break;
+        }
+    }
+
+    void FixedUpdate()
+    {
+        switch (currentState)
+        {
+            case EnemyState.Patrol:
+                HandlePatrol();
+                break;
+            case EnemyState.Chase:
+                HandleChase();
                 break;
         }
     }
@@ -55,61 +84,89 @@ public class EnemyController : MonoBehaviour
     void ChangeState(EnemyState newState)
     {
         currentState = newState;
-        Debug.Log("Enemy chuyển sang trạng thái: " + currentState);
+        animator.ResetTrigger("Attack");
+        animator.SetBool("IsMoving", false);
     }
 
-    void Patrol()
+    void HandlePatrol()
     {
-        if (patrolPoints == null || patrolPoints.Length == 0) return;
+        if (patrolPoints.Length == 0) return;
 
-        Transform targetPoint = patrolPoints[currentPatrolIndex];
-        if (targetPoint == null) return;
-
-        Vector2 direction = (targetPoint.position - transform.position).normalized;
-        rb.MovePosition(rb.position + direction * patrolSpeed * Time.deltaTime);
-
-        if (Vector2.Distance(transform.position, targetPoint.position) < reachThreshold)
+        if (patrolWaitTimer > 0f)
         {
-            currentPatrolIndex = (currentPatrolIndex + 1) % patrolPoints.Length;
+            patrolWaitTimer -= Time.fixedDeltaTime;
+            rb.linearVelocity = Vector2.zero;
+            UpdateAnimator(Vector2.zero);
+            return;
+        }
+
+        Transform target = patrolPoints[patrolIndex];
+        if (target == null) return;
+
+        Vector2 direction = (target.position - transform.position).normalized;
+        rb.MovePosition(rb.position + direction * patrolSpeed * Time.fixedDeltaTime);
+
+        Flip(direction);
+        UpdateAnimator(direction);
+
+        if (Vector2.Distance(transform.position, target.position) < reachThreshold)
+        {
+            patrolWaitTimer = patrolWaitTime;
+            patrolIndex = (patrolIndex + 1) % patrolPoints.Length;
         }
     }
 
-    void ChasePlayer()
+    void HandleChase()
     {
-        float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+        float distance = Vector2.Distance(transform.position, player.position);
 
-        // Nếu còn xa hơn khoảng stopDistance thì mới di chuyển
-        if (distanceToPlayer > stopDistance)
+        if (distance > stopDistance)
         {
             Vector2 direction = (player.position - transform.position).normalized;
-            rb.MovePosition(rb.position + direction * chaseSpeed * Time.deltaTime);
+            rb.MovePosition(rb.position + direction * chaseSpeed * Time.fixedDeltaTime);
+
+            Flip(direction);
+            UpdateAnimator(direction);
         }
         else
         {
-            // Dừng lại hoặc có thể xoay mặt về phía player nếu muốn
             rb.linearVelocity = Vector2.zero;
+            UpdateAnimator(Vector2.zero);
+
+            if (attackTimer <= 0f)
+            {
+                animator.SetTrigger("Attack");
+                attackBehavior?.Attack(player);
+                attackTimer = attackCooldown;
+            }
         }
     }
 
-    // --- Vẽ Gizmos để dễ chỉnh trong Scene ---
+    void UpdateAnimator(Vector2 direction)
+    {
+        animator.SetBool("IsMoving", direction != Vector2.zero);
+    }
+
+    void Flip(Vector2 direction)
+    {
+        if (direction.x != 0)
+        {
+            Vector3 scale = transform.localScale;
+            scale.x = direction.x > 0 ? Mathf.Abs(scale.x) : -Mathf.Abs(scale.x);
+            transform.localScale = scale;
+        }
+    }
+
     void OnDrawGizmosSelected()
     {
-        // Phạm vi phát hiện player
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, detectionRange);
 
-        // Các điểm tuần tra
         Gizmos.color = Color.green;
-        if (patrolPoints != null)
+        foreach (var point in patrolPoints)
         {
-            for (int i = 0; i < patrolPoints.Length; i++)
-            {
-                if (patrolPoints[i] != null)
-                    Gizmos.DrawSphere(patrolPoints[i].position, 0.1f);
-
-                if (i < patrolPoints.Length - 1 && patrolPoints[i] != null && patrolPoints[i + 1] != null)
-                    Gizmos.DrawLine(patrolPoints[i].position, patrolPoints[i + 1].position);
-            }
+            if (point != null)
+                Gizmos.DrawSphere(point.position, 0.1f);
         }
     }
 }
