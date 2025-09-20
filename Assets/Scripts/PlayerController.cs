@@ -28,7 +28,6 @@ public class PlayerController : MonoBehaviour
         {
             lastAttackTime = Time.time;
 
-            // Lấy hướng đánh từ hướng di chuyển cuối
             float attackX = animator.GetFloat("LastMoveX");
             float attackY = animator.GetFloat("LastMoveY");
 
@@ -36,10 +35,10 @@ public class PlayerController : MonoBehaviour
             animator.SetFloat("AttackY", attackY);
             animator.SetTrigger("Attack");
 
-            Invoke(nameof(PerformAttack), 0.1f);
+            UpdateAttackPointDirection(); // cập nhật hướng trước khi đánh
         }
     }
-    void PerformAttack()
+    public void Damage()
     {
         // Phát hiện enemy trong vùng đòn đánh
         Collider2D[] hits = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayer);
@@ -48,6 +47,17 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Đánh trúng: " + enemy.name);
             // TODO: gọi hàm nhận sát thương của enemy
         }
+    }
+    void UpdateAttackPointDirection()
+    {
+        float attackX = animator.GetFloat("LastMoveX");
+        float attackY = animator.GetFloat("LastMoveY");
+
+        Vector2 direction = new Vector2(attackX, attackY).normalized;
+
+        // Đặt vị trí cục bộ của attackPoint theo hướng
+        float offsetDistance = 0.5f; // khoảng cách từ nhân vật đến điểm tấn công
+        attackPoint.localPosition = direction * offsetDistance;
     }
 
     void OnDrawGizmosSelected()

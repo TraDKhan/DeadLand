@@ -359,7 +359,17 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      mare_run-Sheet_0: -8238473842530387563
+      mare_run-Sheet_1: 2685371602686207482
+      mare_run-Sheet_2: -7386692998633373200
+      mare_run-Sheet_3: 5174214434815395369
+      mare_run-Sheet_4: -2463347177480254941
+      mare_run-Sheet_5: -8278585554279582303
+      mare_run-Sheet_6: 8551911802800395255
+      mare_run-Sheet_7: 6396624983400465026
+      mare_run-Sheet_8: 8913189142035913029
+      mare_run-Sheet_9: 9175845922347615857
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -57,7 +57,6 @@ public class PlayerMovement : MonoBehaviour
         Vector2 newPosition = rb.position + movement * moveSpeed * Time.fixedDeltaTime;
         rb.MovePosition(newPosition);
     }
-
     void HandleAnimation()
     {
         bool isMoving = movement != Vector2.zero;

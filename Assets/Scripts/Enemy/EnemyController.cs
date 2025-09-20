@@ -3,7 +3,7 @@
 [RequireComponent(typeof(Rigidbody2D), typeof(Animator))]
 public class EnemyController : MonoBehaviour
 {
-    public enum EnemyState { Idle, Patrol, Chase }
+    public enum EnemyState { Idle, Patrol, Chase, Attack }
 
     [Header("References")]
     public Transform player;
@@ -32,6 +32,7 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        rb.freezeRotation = true; // ✅ tránh xoay vật lý 2D
         animator = GetComponent<Animator>();
 
         currentState = patrolPoints.Length > 0 ? EnemyState.Patrol : EnemyState.Idle;
@@ -43,8 +44,9 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
-        attackTimer -= Time.deltaTime;
+        if (player == null) return;
 
+        attackTimer -= Time.deltaTime;
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
 
         switch (currentState)
@@ -64,6 +66,8 @@ public class EnemyController : MonoBehaviour
             case EnemyState.Chase:
                 if (distanceToPlayer > detectionRange)
                     ChangeState(patrolPoints.Length > 0 ? EnemyState.Patrol : EnemyState.Idle);
+                else if (distanceToPlayer <= stopDistance)
+                    ChangeState(EnemyState.Attack);
                 break;
         }
     }
@@ -78,13 +82,16 @@ public class EnemyController : MonoBehaviour
             case EnemyState.Chase:
                 HandleChase();
                 break;
+            case EnemyState.Attack:
+                HandleAttack();
+                break;
         }
     }
 
     void ChangeState(EnemyState newState)
     {
         currentState = newState;
-        animator.ResetTrigger("Attack");
+        // ⚠️ Không reset trigger Attack mỗi lần đổi trạng thái để tránh ngắt animation giữa chừng
         animator.SetBool("IsMoving", false);
     }
 
@@ -95,7 +102,7 @@ public class EnemyController : MonoBehaviour
         if (patrolWaitTimer > 0f)
         {
             patrolWaitTimer -= Time.fixedDeltaTime;
-            rb.linearVelocity = Vector2.zero;
+            rb.linearVelocity = Vector2.zero; // ✅ sửa linearVelocity
             UpdateAnimator(Vector2.zero);
             return;
         }
@@ -118,6 +125,8 @@ public class EnemyController : MonoBehaviour
 
     void HandleChase()
     {
+        if (player == null) return;
+
         float distance = Vector2.Distance(transform.position, player.position);
 
         if (distance > stopDistance)
@@ -130,7 +139,7 @@ public class EnemyController : MonoBehaviour
         }
         else
         {
-            rb.linearVelocity = Vector2.zero;
+            rb.linearVelocity = Vector2.zero; // ✅ sửa linearVelocity
             UpdateAnimator(Vector2.zero);
 
             if (attackTimer <= 0f)
@@ -142,6 +151,25 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    void HandleAttack()
+    {
+        rb.linearVelocity = Vector2.zero;
+        UpdateAnimator(Vector2.zero);
+
+        if (attackTimer <= 0f)
+        {
+            animator.SetTrigger("Attack");
+            attackBehavior?.Attack(player);
+            attackTimer = attackCooldown;
+        }
+
+        // Sau khi tấn công, quay lại Chase nếu người chơi vẫn còn gần
+        float distance = Vector2.Distance(transform.position, player.position);
+        if (distance > stopDistance)
+        {
+            ChangeState(EnemyState.Chase);
+        }
+    }
     void UpdateAnimator(Vector2 direction)
     {
         animator.SetBool("IsMoving", direction != Vector2.zero);

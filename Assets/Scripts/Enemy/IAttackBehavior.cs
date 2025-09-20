@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
 public interface IAttackBehavior
 {
-    public void Attack(Transform a);
+    public void Attack(Transform target);
 }
