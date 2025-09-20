@@ -27,10 +27,12 @@ public class EnemyController : MonoBehaviour
     private int patrolIndex = 0;
     private float patrolWaitTimer = 0f;
 
+    private Vector2 lastPosition;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.freezeRotation = true;
+
         animator = GetComponent<Animator>();
 
         currentState = patrolPoints.Length > 0 ? EnemyState.Patrol : EnemyState.Idle;
@@ -40,6 +42,8 @@ public class EnemyController : MonoBehaviour
         {
             attackBehavior = gameObject.AddComponent<GhostAttack>();
         }
+
+        lastPosition = rb.position;
     }
 
     void Update()
@@ -84,6 +88,16 @@ public class EnemyController : MonoBehaviour
             case EnemyState.Chase: HandleChase(); break;
             case EnemyState.Attack: HandleAttack(); break;
         }
+
+        // 🔎 Nếu đang Chase thì log tốc độ thực
+        if (currentState == EnemyState.Chase)
+        {
+            float distance = Vector2.Distance(rb.position, lastPosition);
+            float speed = distance / Time.fixedDeltaTime;
+            Debug.Log($"{gameObject.name} chase speed: {speed:F3}");
+        }
+
+        lastPosition = rb.position; // cập nhật lại sau mỗi FixedUpdate
     }
 
     void ChangeState(EnemyState newState)
@@ -99,7 +113,6 @@ public class EnemyController : MonoBehaviour
         if (patrolWaitTimer > 0f)
         {
             patrolWaitTimer -= Time.fixedDeltaTime;
-            rb.linearVelocity = Vector2.zero;
             UpdateAnimator(Vector2.zero);
             return;
         }
@@ -108,8 +121,9 @@ public class EnemyController : MonoBehaviour
         if (target == null) return;
 
         Vector2 direction = (target.position - transform.position).normalized;
-        rb.MovePosition(rb.position + direction * patrolSpeed * Time.fixedDeltaTime);
+        Vector2 newPosition = rb.position + direction * patrolSpeed * Time.fixedDeltaTime;
 
+        rb.MovePosition(newPosition); // ✅ di chuyển bằng MovePosition
         Flip(direction);
         UpdateAnimator(direction);
 
@@ -125,17 +139,16 @@ public class EnemyController : MonoBehaviour
         if (player == null) return;
 
         Vector2 direction = (player.position - transform.position).normalized;
-        rb.MovePosition(rb.position + direction * chaseSpeed * Time.fixedDeltaTime);
+        Vector2 newPosition = rb.position + direction * chaseSpeed * Time.fixedDeltaTime;
 
+        rb.MovePosition(newPosition); // ✅ di chuyển bằng MovePosition
         Flip(direction);
         UpdateAnimator(direction);
     }
 
     void HandleAttack()
     {
-        rb.linearVelocity = Vector2.zero;
         UpdateAnimator(Vector2.zero);
-
         if (attackBehavior != null)
         {
             attackBehavior.Attack(player);

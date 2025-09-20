@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 3
   tags:
   - Ghost
+  - Skeleton1
+  - Skeleton2
   layers:
   - Default
   - TransparentFX
