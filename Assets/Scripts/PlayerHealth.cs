@@ -25,8 +25,6 @@ public class PlayerHealth : MonoBehaviour
         currentHealth -= amount;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
 
-        Debug.Log("Player bị trúng đòn, còn lại: " + currentHealth);
-
         animator.SetTrigger("Hurt");
 
         UpdateHealthUI();

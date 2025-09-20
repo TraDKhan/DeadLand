@@ -24,31 +24,15 @@ public class GhostAttack : MonoBehaviour, IAttackBehavior
 
     public void Attack(Transform target)
     {
-        if (cooldownTimer > 0f) return; // chưa hết hồi chiêu
+        if (cooldownTimer > 0f) return;
 
         // bật trigger Attack để chạy animation
         animator?.SetTrigger("Attack");
 
-        // Damage có thể gọi trực tiếp tại đây
-        // hoặc tốt hơn: gọi từ Animation Event (OnAttackHit) để khớp frame
-        DoDamage(target);
-
         cooldownTimer = attackCooldown;
     }
 
-    private void DoDamage(Transform target)
-    {
-        // kiểm tra player trong phạm vi attack
-        Collider2D hit = Physics2D.OverlapCircle(transform.position, attackRange, playerLayer);
-        if (hit != null)
-        {
-            animator.SetTrigger("Attack");
-            hit.GetComponent<PlayerHealth>()?.TakeDamage(damage);
-            Debug.Log($"👻 GhostAttack: Gây {damage} sát thương vào {target.name}");
-        }
-    }
-
-    // Hàm này bạn có thể gọi bằng Animation Event ngay frame ra đòn
+    // Gọi trong event Animation Ghost
     public void OnAttackHit()
     {
         Collider2D hit = Physics2D.OverlapCircle(transform.position, attackRange, playerLayer);

@@ -99,7 +99,7 @@ public class EnemyController : MonoBehaviour
         if (patrolWaitTimer > 0f)
         {
             patrolWaitTimer -= Time.fixedDeltaTime;
-            rb.linearVelocity = Vector2.zero; // ✅ sửa
+            rb.linearVelocity = Vector2.zero;
             UpdateAnimator(Vector2.zero);
             return;
         }
@@ -136,8 +136,6 @@ public class EnemyController : MonoBehaviour
         rb.linearVelocity = Vector2.zero;
         UpdateAnimator(Vector2.zero);
 
-        // Gọi hành vi attack (cooldown sẽ do GhostAttack quản lý)
-        //animator.SetTrigger("Attack");
         if (attackBehavior != null)
         {
             attackBehavior.Attack(player);

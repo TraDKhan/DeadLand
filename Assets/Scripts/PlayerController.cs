@@ -4,10 +4,11 @@
 public class PlayerController : MonoBehaviour
 {
     [Header("Attack Settings")]
-    public float attackCooldown = 0.5f;   // thời gian chờ giữa các đòn
-    public Transform attackPoint;         // vị trí trung tâm đòn đánh
-    public float attackRange = 0.5f;      // bán kính đòn đánh
-    public LayerMask enemyLayer;          // layer địch
+    public int attackDamage = 1;
+    public float attackCooldown = 0.5f;
+    public Transform attackPoint;
+    public float attackRange = 0.5f;
+    public LayerMask enemyLayer;
 
     private Animator animator;
     private float lastAttackTime;
@@ -21,7 +22,7 @@ public class PlayerController : MonoBehaviour
     {
         HandleAttack();
     }
-
+    
     void HandleAttack()
     {
         if (Input.GetKeyDown(KeyCode.J) && Time.time >= lastAttackTime + attackCooldown)
@@ -32,10 +33,10 @@ public class PlayerController : MonoBehaviour
             float attackY = animator.GetFloat("LastMoveY");
 
             animator.SetFloat("AttackX", attackX);
-            animator.SetFloat("AttackY", attackY);
-            animator.SetTrigger("Attack");
+            animator.SetFloat("AttackY", attackY); 
 
-            UpdateAttackPointDirection(); // cập nhật hướng trước khi đánh
+            UpdateAttackPointDirection();
+            animator.SetTrigger("Attack");
         }
     }
     public void Damage()
@@ -44,8 +45,8 @@ public class PlayerController : MonoBehaviour
         Collider2D[] hits = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayer);
         foreach (Collider2D enemy in hits)
         {
-            Debug.Log("Đánh trúng: " + enemy.name);
-            // TODO: gọi hàm nhận sát thương của enemy
+            enemy.GetComponent<EnemyHealth>()?.TakeDamage(attackDamage);
+            Debug.Log($"Gây {attackDamage} lên " + enemy.name);      
         }
     }
     void UpdateAttackPointDirection()
