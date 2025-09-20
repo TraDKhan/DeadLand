@@ -18,7 +18,6 @@ public class EnemyController : MonoBehaviour
 
     [Header("Timers")]
     public float patrolWaitTime = 2f;
-    public float attackCooldown = 1.5f;
 
     private EnemyState currentState;
     private IAttackBehavior attackBehavior;
@@ -27,26 +26,26 @@ public class EnemyController : MonoBehaviour
 
     private int patrolIndex = 0;
     private float patrolWaitTimer = 0f;
-    private float attackTimer = 0f;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.freezeRotation = true; // ✅ tránh xoay vật lý 2D
+        rb.freezeRotation = true;
         animator = GetComponent<Animator>();
 
         currentState = patrolPoints.Length > 0 ? EnemyState.Patrol : EnemyState.Idle;
 
         attackBehavior = GetComponent<IAttackBehavior>();
         if (attackBehavior == null && CompareTag("Ghost"))
-            attackBehavior = new GhostAttack(); // fallback
+        {
+            attackBehavior = gameObject.AddComponent<GhostAttack>();
+        }
     }
 
     void Update()
     {
         if (player == null) return;
 
-        attackTimer -= Time.deltaTime;
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
 
         switch (currentState)
@@ -69,6 +68,11 @@ public class EnemyController : MonoBehaviour
                 else if (distanceToPlayer <= stopDistance)
                     ChangeState(EnemyState.Attack);
                 break;
+
+            case EnemyState.Attack:
+                if (distanceToPlayer > stopDistance)
+                    ChangeState(EnemyState.Chase);
+                break;
         }
     }
 
@@ -76,22 +80,15 @@ public class EnemyController : MonoBehaviour
     {
         switch (currentState)
         {
-            case EnemyState.Patrol:
-                HandlePatrol();
-                break;
-            case EnemyState.Chase:
-                HandleChase();
-                break;
-            case EnemyState.Attack:
-                HandleAttack();
-                break;
+            case EnemyState.Patrol: HandlePatrol(); break;
+            case EnemyState.Chase: HandleChase(); break;
+            case EnemyState.Attack: HandleAttack(); break;
         }
     }
 
     void ChangeState(EnemyState newState)
     {
         currentState = newState;
-        // ⚠️ Không reset trigger Attack mỗi lần đổi trạng thái để tránh ngắt animation giữa chừng
         animator.SetBool("IsMoving", false);
     }
 
@@ -102,7 +99,7 @@ public class EnemyController : MonoBehaviour
         if (patrolWaitTimer > 0f)
         {
             patrolWaitTimer -= Time.fixedDeltaTime;
-            rb.linearVelocity = Vector2.zero; // ✅ sửa linearVelocity
+            rb.linearVelocity = Vector2.zero; // ✅ sửa
             UpdateAnimator(Vector2.zero);
             return;
         }
@@ -127,28 +124,11 @@ public class EnemyController : MonoBehaviour
     {
         if (player == null) return;
 
-        float distance = Vector2.Distance(transform.position, player.position);
+        Vector2 direction = (player.position - transform.position).normalized;
+        rb.MovePosition(rb.position + direction * chaseSpeed * Time.fixedDeltaTime);
 
-        if (distance > stopDistance)
-        {
-            Vector2 direction = (player.position - transform.position).normalized;
-            rb.MovePosition(rb.position + direction * chaseSpeed * Time.fixedDeltaTime);
-
-            Flip(direction);
-            UpdateAnimator(direction);
-        }
-        else
-        {
-            rb.linearVelocity = Vector2.zero; // ✅ sửa linearVelocity
-            UpdateAnimator(Vector2.zero);
-
-            if (attackTimer <= 0f)
-            {
-                animator.SetTrigger("Attack");
-                attackBehavior?.Attack(player);
-                attackTimer = attackCooldown;
-            }
-        }
+        Flip(direction);
+        UpdateAnimator(direction);
     }
 
     void HandleAttack()
@@ -156,20 +136,14 @@ public class EnemyController : MonoBehaviour
         rb.linearVelocity = Vector2.zero;
         UpdateAnimator(Vector2.zero);
 
-        if (attackTimer <= 0f)
+        // Gọi hành vi attack (cooldown sẽ do GhostAttack quản lý)
+        //animator.SetTrigger("Attack");
+        if (attackBehavior != null)
         {
-            animator.SetTrigger("Attack");
-            attackBehavior?.Attack(player);
-            attackTimer = attackCooldown;
-        }
-
-        // Sau khi tấn công, quay lại Chase nếu người chơi vẫn còn gần
-        float distance = Vector2.Distance(transform.position, player.position);
-        if (distance > stopDistance)
-        {
-            ChangeState(EnemyState.Chase);
+            attackBehavior.Attack(player);
         }
     }
+
     void UpdateAnimator(Vector2 direction)
     {
         animator.SetBool("IsMoving", direction != Vector2.zero);

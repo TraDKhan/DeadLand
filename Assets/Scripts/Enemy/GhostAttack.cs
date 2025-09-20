@@ -9,10 +9,15 @@ public class GhostAttack : MonoBehaviour, IAttackBehavior
     public LayerMask playerLayer;
 
     private float cooldownTimer = 0f;
+    private Animator animator;
+
+    void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     void Update()
     {
-        // giảm cooldown mỗi frame
         if (cooldownTimer > 0f)
             cooldownTimer -= Time.deltaTime;
     }
@@ -21,18 +26,39 @@ public class GhostAttack : MonoBehaviour, IAttackBehavior
     {
         if (cooldownTimer > 0f) return; // chưa hết hồi chiêu
 
-        // kiểm tra player trong phạm vi tấn công
+        // bật trigger Attack để chạy animation
+        animator?.SetTrigger("Attack");
+
+        // Damage có thể gọi trực tiếp tại đây
+        // hoặc tốt hơn: gọi từ Animation Event (OnAttackHit) để khớp frame
+        DoDamage(target);
+
+        cooldownTimer = attackCooldown;
+    }
+
+    private void DoDamage(Transform target)
+    {
+        // kiểm tra player trong phạm vi attack
+        Collider2D hit = Physics2D.OverlapCircle(transform.position, attackRange, playerLayer);
+        if (hit != null)
+        {
+            animator.SetTrigger("Attack");
+            hit.GetComponent<PlayerHealth>()?.TakeDamage(damage);
+            Debug.Log($"👻 GhostAttack: Gây {damage} sát thương vào {target.name}");
+        }
+    }
+
+    // Hàm này bạn có thể gọi bằng Animation Event ngay frame ra đòn
+    public void OnAttackHit()
+    {
         Collider2D hit = Physics2D.OverlapCircle(transform.position, attackRange, playerLayer);
         if (hit != null)
         {
             hit.GetComponent<PlayerHealth>()?.TakeDamage(damage);
-            Debug.Log($"GhostAttack: Gây {damage} sát thương vào {target.name}");
+            Debug.Log($"👻 GhostAttack (Anim Event): Gây {damage} sát thương vào {hit.name}");
         }
-
-        cooldownTimer = attackCooldown; // reset lại cooldown
     }
 
-    // Vẽ gizmos để debug vùng attack
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.magenta;
