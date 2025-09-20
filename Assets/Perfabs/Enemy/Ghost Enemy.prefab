@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8203790173382612396}
   - component: {fileID: 5285581302938034294}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: HP UI Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -189,7 +189,7 @@ GameObject:
   - component: {fileID: 526898629833750240}
   - component: {fileID: 158965176209083404}
   m_Layer: 5
-  m_Name: HP
+  m_Name: HP Ghost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -482,6 +482,10 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
+  enableDoT: 1
+  dotDamage: 2
+  dotDuration: 5
+  dotInterval: 1
 --- !u!114 &1522242462351714231
 MonoBehaviour:
   m_ObjectHideFlags: 0

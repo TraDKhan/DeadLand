@@ -63,8 +63,33 @@ AnimationClip:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
   m_ClipBindingConstant:
-    genericBindings: []
-    pptrCurveMapping: []
+    genericBindings:
+    - serializedVersion: 2
+      path: 0
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 23
+      isPPtrCurve: 1
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
+    pptrCurveMapping:
+    - {fileID: -9017779299857708313, guid: 2acdc67ed58db8040ae355f2a7eec169, type: 3}
+    - {fileID: -9099891761788130296, guid: 2acdc67ed58db8040ae355f2a7eec169, type: 3}
+    - {fileID: -4813178921615023263, guid: 2acdc67ed58db8040ae355f2a7eec169, type: 3}
+    - {fileID: -1525697154015751826, guid: 2acdc67ed58db8040ae355f2a7eec169, type: 3}
+    - {fileID: -3259817335930302895, guid: 2acdc67ed58db8040ae355f2a7eec169, type: 3}
+    - {fileID: 5705479153611175413, guid: 2acdc67ed58db8040ae355f2a7eec169, type: 3}
+    - {fileID: -6423369654679253226, guid: 2acdc67ed58db8040ae355f2a7eec169, type: 3}
+    - {fileID: -5922656819655514942, guid: 2acdc67ed58db8040ae355f2a7eec169, type: 3}
+    - {fileID: 3981654279632411503, guid: 2acdc67ed58db8040ae355f2a7eec169, type: 3}
+    - {fileID: -8395612200289510211, guid: 2acdc67ed58db8040ae355f2a7eec169, type: 3}
+    - {fileID: -2730815247220301948, guid: 2acdc67ed58db8040ae355f2a7eec169, type: 3}
+    - {fileID: -76701118944293192, guid: 2acdc67ed58db8040ae355f2a7eec169, type: 3}
+    - {fileID: 2301279971980384370, guid: 2acdc67ed58db8040ae355f2a7eec169, type: 3}
+    - {fileID: 4579403196691729011, guid: 2acdc67ed58db8040ae355f2a7eec169, type: 3}
+    - {fileID: 943334637385865478, guid: 2acdc67ed58db8040ae355f2a7eec169, type: 3}
+    - {fileID: 943334637385865478, guid: 2acdc67ed58db8040ae355f2a7eec169, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -89,4 +114,18 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.5
+    functionName: OnAttackHit
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1
+    functionName: OnAttackHit
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

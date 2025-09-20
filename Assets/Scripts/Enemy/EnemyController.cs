@@ -120,7 +120,7 @@ public class EnemyController : MonoBehaviour
         Transform target = patrolPoints[patrolIndex];
         if (target == null) return;
 
-        Vector2 direction = (target.position - transform.position).normalized;
+        Vector2 direction = ((Vector2)target.position - rb.position).normalized;
         Vector2 newPosition = rb.position + direction * patrolSpeed * Time.fixedDeltaTime;
 
         rb.MovePosition(newPosition); // ✅ di chuyển bằng MovePosition
@@ -141,7 +141,7 @@ public class EnemyController : MonoBehaviour
         Vector2 direction = (player.position - transform.position).normalized;
         Vector2 newPosition = rb.position + direction * chaseSpeed * Time.fixedDeltaTime;
 
-        rb.MovePosition(newPosition); // ✅ di chuyển bằng MovePosition
+        rb.MovePosition(newPosition);
         Flip(direction);
         UpdateAnimator(direction);
     }
@@ -174,6 +174,9 @@ public class EnemyController : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, detectionRange);
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, stopDistance);
 
         Gizmos.color = Color.green;
         foreach (var point in patrolPoints)
