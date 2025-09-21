@@ -16,8 +16,9 @@ GameObject:
   - component: {fileID: 2780853470794860639}
   - component: {fileID: 2142451700657720629}
   - component: {fileID: 7797108531140278284}
+  - component: {fileID: 2145710032783881325}
   m_Layer: 7
-  m_Name: Skeleton2
+  m_Name: Skeleton2 Enemy
   m_TagString: Skeleton2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -244,6 +245,20 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
+--- !u!114 &2145710032783881325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795842535219557808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f052c651964e4f6479c6b0510d01c281, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropItems: []
+  spawnRadius: 0.5
 --- !u!1 &3499712565904675339
 GameObject:
   m_ObjectHideFlags: 0

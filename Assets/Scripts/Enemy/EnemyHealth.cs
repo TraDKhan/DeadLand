@@ -23,7 +23,6 @@ public class EnemyHealth : MonoBehaviour
     {
         currentHealth = maxHealth;
         UpdateHealthUI();
-        Debug.Log("HP Enemy " + currentHealth);
     }
 
     public void TakeDamage(int damage)
@@ -31,7 +30,6 @@ public class EnemyHealth : MonoBehaviour
         if (isDead) return;
 
         currentHealth -= damage;
-        Debug.Log("Sát thương " + damage);
 
         UpdateHealthUI();
 
@@ -49,7 +47,6 @@ public class EnemyHealth : MonoBehaviour
         if (healthFillImage != null)
         {
             healthFillImage.fillAmount = (float)currentHealth / maxHealth;
-            Debug.Log($"HP Enemy còn {currentHealth} / {maxHealth}");
         }
     }
 

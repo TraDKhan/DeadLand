@@ -94,7 +94,6 @@ public class EnemyController : MonoBehaviour
         {
             float distance = Vector2.Distance(rb.position, lastPosition);
             float speed = distance / Time.fixedDeltaTime;
-            Debug.Log($"{gameObject.name} chase speed: {speed:F3}");
         }
 
         lastPosition = rb.position; // cập nhật lại sau mỗi FixedUpdate

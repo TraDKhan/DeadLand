@@ -269,6 +269,7 @@ GameObject:
   - component: {fileID: 6142430360453442579}
   - component: {fileID: 9108443937695586893}
   - component: {fileID: 1522242462351714231}
+  - component: {fileID: 5960776036116062223}
   m_Layer: 7
   m_Name: Ghost Enemy
   m_TagString: Ghost
@@ -501,3 +502,17 @@ MonoBehaviour:
   maxHealth: 100
   healthFillImage: {fileID: 158965176209083404}
   isDead: 0
+--- !u!114 &5960776036116062223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8631206839170668789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f052c651964e4f6479c6b0510d01c281, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropItems: []
+  spawnRadius: 0.5

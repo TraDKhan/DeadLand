@@ -2,27 +2,26 @@
 
 public class ItemPickup : MonoBehaviour
 {
-    public ItemType itemType;
-    public int amount = 1; // số lượng (VD: vàng = 10, bình máu = 1)
+    public ItemData itemData;
+    public int amount = 1;
 
-    public void SetItem(ItemType type, int value)
+    public void SetItem(ItemData data, int value)
     {
-        itemType = type;
+        itemData = data;
         amount = value;
-        // có thể update icon/text prefab tại đây
+        // Có thể update icon text tại đây
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            Inventory inv = collision.GetComponent<Inventory>();
-            if (inv != null)
+            if (InventoryManager.Instance != null)
             {
-                inv.AddItem(itemType, amount);
+                InventoryManager.Instance.AddItem(itemData, amount);
             }
 
-            Destroy(gameObject); // nhặt xong thì biến mất
+            Destroy(gameObject); // Nhặt xong biến mất
         }
     }
 }
