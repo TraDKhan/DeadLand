@@ -10,17 +10,15 @@ public class InventoryUI : MonoBehaviour
     public Transform slotParent;
     public GameObject slotPrefab;
 
+    // 🔹 Item đang chọn
+    public InventoryItem selectedItem;
+
     private void Awake()
     {
         Instance = this;
         gameObject.SetActive(false);
-        Debug.Log("InventoryUI Instance đã được set!");
     }
 
-    private void Start()
-    {
-        
-    }
     public void RefreshUI()
     {
         foreach (Transform child in slotParent)
@@ -33,24 +31,25 @@ public class InventoryUI : MonoBehaviour
             Transform iconObj = slot.transform.Find("Icon");
             Transform amountObj = slot.transform.Find("Amount");
 
-            Image icon = iconObj.GetComponent<Image>();
-            TextMeshProUGUI amountText = amountObj.GetComponent<TextMeshProUGUI>();
-
-            if (item.itemData == null)
-            {
-                Debug.LogError("itemData bị null trong InventoryItem!");
-                continue;
-            }
-            if (item.itemData.icon == null)
-            {
-                Debug.LogError($"Item {item.itemData.itemName} chưa có icon!");
-                continue;
-            }
+            UnityEngine.UI.Image icon = iconObj.GetComponent<UnityEngine.UI.Image>();
+            TMPro.TextMeshProUGUI amountText = amountObj.GetComponent<TMPro.TextMeshProUGUI>();
 
             icon.sprite = item.itemData.icon;
             amountText.text = item.amount.ToString();
-        }
 
+            // 🟢 Khi click vào slot → chọn item này
+            UnityEngine.UI.Button btn = slot.GetComponent<UnityEngine.UI.Button>();
+            if (btn != null)
+            {
+                btn.onClick.AddListener(() => SelectItem(item));
+            }
+        }
+    }
+
+    private void SelectItem(InventoryItem item)
+    {
+        selectedItem = item;
+        Debug.Log($"Đã chọn item: {item.itemData.itemName}");
     }
     public void ToggleInventoryPanel()
     {

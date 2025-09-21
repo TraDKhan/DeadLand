@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
         //gọi phím x đê vứt vật phẩm đầu tiên
         if (Input.GetKeyDown(KeyCode.X))
         {
-            DropFirstItem();
+            DropSelectedItem();
         }
     }
     
@@ -91,5 +91,27 @@ public class PlayerController : MonoBehaviour
         InventoryManager.Instance.DropItem(firstItem.itemData, 1, dropPos);
 
         Debug.Log($"Đã vứt 1 {firstItem.itemData.itemName}");
+    }
+
+    private void DropSelectedItem()
+    {
+        if (InventoryUI.Instance.selectedItem == null)
+        {
+            Debug.Log("Chưa chọn item nào để vứt!");
+            return;
+        }
+
+        InventoryItem selected = InventoryUI.Instance.selectedItem;
+        Vector3 dropPos = transform.position + transform.right * 1f;
+
+        InventoryManager.Instance.DropItem(selected.itemData, 1, dropPos);
+
+        Debug.Log($"Đã vứt 1 {selected.itemData.itemName}");
+
+        // Nếu đã vứt hết thì bỏ chọn
+        if (selected.amount <= 0)
+        {
+            InventoryUI.Instance.selectedItem = null;
+        }
     }
 }
