@@ -245,6 +245,7 @@ GameObject:
   - component: {fileID: 340348118}
   - component: {fileID: 340348124}
   - component: {fileID: 340348125}
+  - component: {fileID: 340348126}
   m_Layer: 6
   m_Name: 'Player '
   m_TagString: Player
@@ -470,6 +471,34 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   healthFillImage: {fileID: 998581083}
+--- !u!114 &340348126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 340348117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6ddcd199d4dbfd4192bf7b155048f20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gold: 0
+  hpPotion: 0
+  mpPotion: 0
+  currentWeapon: 
+  currentArmor: 
+--- !u!114 &417358395 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4858983261581203760, guid: 2e1f939422d26334087a2dac4a069d04, type: 3}
+  m_PrefabInstance: {fileID: 705621797272868235}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f052c651964e4f6479c6b0510d01c281, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1057,6 +1086,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 998581081}
   m_CullTransparentMesh: 1
+--- !u!1 &1415324891
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1415324893}
+  - component: {fileID: 1415324892}
+  m_Layer: 0
+  m_Name: Drop Test
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1415324892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1415324891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 864884922d16d2343b23fe425226e7fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyDrop: {fileID: 417358395}
+  testRuns: 100
+--- !u!4 &1415324893
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1415324891}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.7749466, y: -0.8683722, z: -0.019861817}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1419027070
 GameObject:
   m_ObjectHideFlags: 0
@@ -1293,10 +1368,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ' Skeleton 1 Enemy'
       objectReference: {fileID: 0}
-    - target: {fileID: 8227339090829482811, guid: 2e1f939422d26334087a2dac4a069d04, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1313,6 +1384,10 @@ PrefabInstance:
     - target: {fileID: 1795842535219557808, guid: 652497ada2f802b4ba6c6e919bf29879, type: 3}
       propertyPath: m_Name
       value: Skeleton2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1795842535219557808, guid: 652497ada2f802b4ba6c6e919bf29879, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2780853470794860639, guid: 652497ada2f802b4ba6c6e919bf29879, type: 3}
       propertyPath: player
@@ -1441,7 +1516,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8631206839170668789, guid: 2d136d91e9e74f6469608b35a5598a14, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1458,8 +1533,9 @@ SceneRoots:
   - {fileID: 340348123}
   - {fileID: 529650737}
   - {fileID: 6495437615325368989}
-  - {fileID: 705621797272868235}
   - {fileID: 314579553}
   - {fileID: 1419027071}
   - {fileID: 1892859612}
   - {fileID: 1256896736034846692}
+  - {fileID: 705621797272868235}
+  - {fileID: 1415324893}

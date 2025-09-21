@@ -11,17 +11,19 @@ public class EnemyHealth : MonoBehaviour
     [HideInInspector] public bool isDead = false;
 
     private Animator animator;
+    private EnemyDropItem dropSystem;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        dropSystem = GetComponent<EnemyDropItem>();
     }
 
     void Start()
     {
         currentHealth = maxHealth;
         UpdateHealthUI();
-        Debug.Log("HP E " + currentHealth);
+        Debug.Log("HP Enemy " + currentHealth);
     }
 
     public void TakeDamage(int damage)
@@ -29,8 +31,7 @@ public class EnemyHealth : MonoBehaviour
         if (isDead) return;
 
         currentHealth -= damage;
-
-        Debug.Log("Sat thương " + damage);
+        Debug.Log("Sát thương " + damage);
 
         UpdateHealthUI();
 
@@ -42,30 +43,33 @@ public class EnemyHealth : MonoBehaviour
             Die();
         }
     }
+
     void UpdateHealthUI()
     {
         if (healthFillImage != null)
         {
             healthFillImage.fillAmount = (float)currentHealth / maxHealth;
-            Debug.Log($"HP E còn {currentHealth} / {maxHealth}");
+            Debug.Log($"HP Enemy còn {currentHealth} / {maxHealth}");
         }
     }
+
     public void Die()
     {
         isDead = true;
 
         EnemyController ec = GetComponent<EnemyController>();
-        //if (ec != null)
-        //    ec.isDead = true;   // báo cho FSM biết đã chết
-
         if (animator != null)
             animator.SetTrigger("Die");
 
-        // Vô hiệu hóa SkeletonController để dừng di chuyển
         if (ec != null)
             ec.enabled = false;
+
+        // Gọi hệ thống rớt vật phẩm
+        if (dropSystem != null)
+            dropSystem.DropLoot();
     }
 
+    // gọi từ event cuối animation Die
     public void OnDeathAnimationEnd()
     {
         Destroy(gameObject);
