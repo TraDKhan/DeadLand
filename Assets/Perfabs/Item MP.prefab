@@ -4972,7 +4972,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1825311650f5f4749b7fc99d42f3dc48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemType: 4
+  itemData: {fileID: 11400000, guid: ee8de928163d7634883baecdab4ff8dd, type: 2}
   amount: 1
 --- !u!95 &4581788157729079959
 Animator:

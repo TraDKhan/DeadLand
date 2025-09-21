@@ -14,8 +14,13 @@ public class InventoryUI : MonoBehaviour
     {
         Instance = this;
         gameObject.SetActive(false);
+        Debug.Log("InventoryUI Instance đã được set!");
     }
 
+    private void Start()
+    {
+        
+    }
     public void RefreshUI()
     {
         foreach (Transform child in slotParent)
@@ -47,7 +52,7 @@ public class InventoryUI : MonoBehaviour
         }
 
     }
-    public void ToggleInventory()
+    public void ToggleInventoryPanel()
     {
         gameObject.SetActive(!gameObject.activeSelf);
         if (gameObject.activeSelf)

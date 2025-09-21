@@ -13,20 +13,31 @@ public class EnemyDropItem : MonoBehaviour
     {
         foreach (DropItem drop in dropItems)
         {
-            if (Random.value <= drop.chance)
+            float roll = Random.value;
+
+            if (roll <= drop.chance)
             {
                 int amount = Random.Range(drop.minAmount, drop.maxAmount + 1);
-                Vector3 pos = transform.position + (Vector3)Random.insideUnitCircle * spawnRadius;
 
-                GameObject go = Instantiate(drop.prefab, pos, Quaternion.identity);
-
-                ItemPickup pickup = go.GetComponent<ItemPickup>();
-                if (pickup != null)
+                if (drop.itemData != null && drop.itemData.worldPrefab != null)
                 {
-                    pickup.SetItem(drop.itemData, amount);
+                    Vector3 pos = transform.position + (Vector3)Random.insideUnitCircle * spawnRadius;
+                    GameObject go = Instantiate(drop.itemData.worldPrefab, pos, Quaternion.identity);
+
+                    ItemPickup pickup = go.GetComponent<ItemPickup>();
+                    if (pickup != null)
+                    {
+                        pickup.SetItem(drop.itemData, amount);
+                    }
+                }
+                else
+                {
+                    Debug.LogError("ItemData hoặc worldPrefab bị null!");
                 }
             }
         }
     }
+
+
 }
 

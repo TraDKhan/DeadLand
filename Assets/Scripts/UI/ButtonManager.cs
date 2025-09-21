@@ -7,6 +7,7 @@ public class ButtonManager : MonoBehaviour
 
     [Header("Inventory Buttons")]
     public Button toggleInventoryButton;
+    public GameObject inventoryPanel;
 
     [Header("Game Control Buttons")]
     public Button startGameButton;
@@ -24,7 +25,7 @@ public class ButtonManager : MonoBehaviour
     {
         // Gán sự kiện cho các nút
         if (toggleInventoryButton != null)
-            toggleInventoryButton.onClick.AddListener(() => InventoryUI.Instance.ToggleInventory());
+            toggleInventoryButton.onClick.AddListener(() => InventoryUI.Instance.ToggleInventoryPanel());
 
         if (startGameButton != null)
             startGameButton.onClick.AddListener(StartGame);
