@@ -20,7 +20,7 @@ public class EnemyHealth : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
-        UpdateHealthUI(); // gọi ở đây để đúng
+        UpdateHealthUI();
         Debug.Log("HP E " + currentHealth);
     }
 
@@ -50,9 +50,20 @@ public class EnemyHealth : MonoBehaviour
             Debug.Log($"HP E còn {currentHealth} / {maxHealth}");
         }
     }
-    void Die()
+    public void Die()
     {
-        Debug.Log(gameObject.name + " chết");
+        isDead = true;
+
+        EnemyController ec = GetComponent<EnemyController>();
+        //if (ec != null)
+        //    ec.isDead = true;   // báo cho FSM biết đã chết
+
+        if (animator != null)
+            animator.SetTrigger("Die");
+
+        // Vô hiệu hóa SkeletonController để dừng di chuyển
+        if (ec != null)
+            ec.enabled = false;
     }
 
     public void OnDeathAnimationEnd()
