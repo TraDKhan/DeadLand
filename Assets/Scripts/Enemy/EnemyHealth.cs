@@ -31,6 +31,8 @@ public class EnemyHealth : MonoBehaviour
 
         currentHealth -= damage;
 
+        PopupTextManager.Instance.ShowDamage(damage, transform.position + Vector3.up * 0.5f);
+
         UpdateHealthUI();
 
         if (animator != null)

@@ -21,6 +21,12 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         HandleAttack();
+
+        //gọi phím x đê vứt vật phẩm đầu tiên
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            DropFirstItem();
+        }
     }
     
     void HandleAttack()
@@ -67,5 +73,23 @@ public class PlayerController : MonoBehaviour
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(attackPoint.position, attackRange);
         }
+    }
+
+    //============= XU LY ITEM ===========//
+    private void DropFirstItem()
+    {
+        if (InventoryManager.Instance.items.Count == 0)
+        {
+            Debug.Log("Không có item nào để vứt!");
+            return;
+        }
+
+        // 🔹 Ở đây mình demo vứt item đầu tiên trong balo
+        InventoryItem firstItem = InventoryManager.Instance.items[0];
+        Vector3 dropPos = transform.position + transform.right * 1f;
+
+        InventoryManager.Instance.DropItem(firstItem.itemData, 1, dropPos);
+
+        Debug.Log($"Đã vứt 1 {firstItem.itemData.itemName}");
     }
 }

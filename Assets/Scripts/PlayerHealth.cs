@@ -20,12 +20,15 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = maxHealth;
         UpdateHealthUI();
     }
-    public void TakeDamage(int amount)
+    public void TakeDamage(int damage)
     {
-        currentHealth -= amount;
+        currentHealth -= damage;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
 
         animator.SetTrigger("Hurt");
+
+        //gọi popup text để hiển thị sát thương nhân vào
+        PopupTextManager.Instance.ShowDamage(damage, transform.position + Vector3.up * 0.5f);
 
         UpdateHealthUI();
 

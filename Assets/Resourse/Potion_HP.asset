@@ -15,3 +15,4 @@ MonoBehaviour:
   itemName: "B\xECnh HP"
   icon: {fileID: 21300000, guid: 41059b8ea8d270a42baddc2be837cf27, type: 3}
   stackable: 1
+  worldPrefab: {fileID: 6825903420994501836, guid: 8c1bb52d18285cc46815c2554f851c7c, type: 3}

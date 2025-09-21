@@ -267,9 +267,9 @@ GameObject:
   - component: {fileID: 7106145501674703358}
   - component: {fileID: 7199720039945067326}
   - component: {fileID: 1580456799488655919}
-  - component: {fileID: 6006604312129857970}
   - component: {fileID: 2098117833233094624}
   - component: {fileID: 4858983261581203760}
+  - component: {fileID: 5185633918107896385}
   m_Layer: 7
   m_Name: Skeleton 1 Enemy
   m_TagString: Skeleton1
@@ -459,35 +459,12 @@ MonoBehaviour:
   patrolPoints:
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
   detectionRange: 3
   chaseSpeed: 5
   patrolSpeed: 3
   reachThreshold: 1
   stopDistance: 1.5
   patrolWaitTime: 2
---- !u!114 &6006604312129857970
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8227339090829482811}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 164cc3d010f697f42b1b8d4cca2ec29f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackRange: 1
-  attackCooldown: 2
-  damage: 10
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  enableDoT: 1
-  dotDamage: 2
-  dotDuration: 5
-  dotInterval: 1
 --- !u!114 &2098117833233094624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -516,22 +493,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropItems:
-  - name: Vang
-    prefab: {fileID: 2692771174071287748, guid: d27ee7e7edea879448cad4a76374220d, type: 3}
-    itemType: 0
-    chance: 0.945
+  - itemData: {fileID: 11400000, guid: 9330b0710eabb284097268e6ae97e627, type: 2}
+    chance: 0.9
     minAmount: 5
     maxAmount: 20
-  - name: HP
-    prefab: {fileID: 6825903420994501836, guid: 8c1bb52d18285cc46815c2554f851c7c, type: 3}
-    itemType: 3
-    chance: 0.486
+  - itemData: {fileID: 11400000, guid: dd03ac2298483044f91f4d135ec732ef, type: 2}
+    chance: 0.5
     minAmount: 5
     maxAmount: 10
-  - name: MP
-    prefab: {fileID: 7994476848115427993, guid: eecbdcd202c60964bb096f853a67f3d6, type: 3}
-    itemType: 4
-    chance: 0.445
+  - itemData: {fileID: 11400000, guid: ee8de928163d7634883baecdab4ff8dd, type: 2}
+    chance: 0.5
     minAmount: 2
     maxAmount: 5
   spawnRadius: 0.5
+--- !u!114 &5185633918107896385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8227339090829482811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2410f2364aba7e42a2da37fbd92fb76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRange: 1
+  attackCooldown: 2
+  damage: 10
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 64
