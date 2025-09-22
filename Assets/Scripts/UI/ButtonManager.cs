@@ -13,12 +13,24 @@ public class ButtonManager : MonoBehaviour
     public Button startGameButton;
     public Button quitGameButton;
 
+    [Header("Game Play Buttons")]
+    public GameObject pausePanel;
+    public Button openPausePanelButton;
+    public Button closePausePanelButton;
+
+    public GameObject audioSettingPanel;
+    public Button openAudioSettingPanel;
+    public Button closeAudioSettingPanel;
+
+
     private void Awake()
     {
         if (Instance == null)
             Instance = this;
         else
             Destroy(gameObject);
+
+        SetActivePanel();
     }
 
     private void Start()
@@ -32,6 +44,28 @@ public class ButtonManager : MonoBehaviour
 
         if (quitGameButton != null)
             quitGameButton.onClick.AddListener(QuitGame);
+
+        if(openPausePanelButton != null)
+            openPausePanelButton.onClick.AddListener(OpenPausePanel);
+
+        if (closePausePanelButton != null)
+            closePausePanelButton.onClick.AddListener(() => pausePanel.SetActive(false));
+
+        if(openAudioSettingPanel != null)
+            openAudioSettingPanel.onClick.AddListener(() =>  audioSettingPanel.SetActive(true));
+
+        if(closeAudioSettingPanel != null)
+            closeAudioSettingPanel.onClick.AddListener(() => audioSettingPanel.SetActive(false)) ;
+    }
+
+    private void SetActivePanel()
+    {
+        pausePanel.SetActive(false);
+        audioSettingPanel.SetActive(false);
+    }
+    private void OpenPausePanel()
+    {
+        pausePanel.SetActive(true);
     }
 
     private void StartGame()

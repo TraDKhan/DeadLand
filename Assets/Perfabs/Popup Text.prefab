@@ -36,8 +36,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 347, y: -288}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 153.04749, y: -288}
+  m_SizeDelta: {x: 587.9051, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3873200764667779804
 CanvasRenderer:
@@ -163,4 +163,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveUpSpeed: 50
-  fadeDuration: 1
+  fadeDuration: 2
