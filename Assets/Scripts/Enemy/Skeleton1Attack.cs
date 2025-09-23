@@ -24,9 +24,9 @@ public class Skeleton1Attack : MonoBehaviour, IAttackBehavior
     public void Attack(Transform target)
     {
         if (cooldownTimer > 0f) return;
-
-        // bật trigger Attack để chạy animation
         animator?.SetTrigger("Attack");
+
+        AudioManager.Instance.PlaySkeleton1Attack();
 
         cooldownTimer = attackCooldown;
     }

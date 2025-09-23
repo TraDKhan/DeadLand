@@ -226,6 +226,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   healthFillImage: {fileID: 14458302983418292}
+  enemyDeathClip: {fileID: 8300000, guid: 8b182461e397ff449bbc7b78d7aa36dc, type: 3}
   isDead: 0
 --- !u!114 &7797108531140278284
 MonoBehaviour:

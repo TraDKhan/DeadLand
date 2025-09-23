@@ -25,14 +25,25 @@ public class PopupTextManager : MonoBehaviour
         }
 
         PopupText popup = Instantiate(popupPrefab, uiCanvas.transform);
-        popup.Setup(message, worldPos, uiCamera);
-
-        // Đặt màu và scale ban đầu
-        popup.SetColor(color);
-        popup.SetScale(scale);
+        popup.Setup(message, worldPos, uiCamera, color, scale);
     }
+
     public void ShowDamage(int damageAmount, Vector3 worldPos)
     {
         ShowText(damageAmount.ToString(), worldPos, Color.red, 1.3f);
     }
+
+    public void ShowDamageCrit(int damageAmount, Vector3 worldPos)
+    {
+        ShowText(damageAmount.ToString(), worldPos, Color.yellow, 1.3f);
+    }
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            PopupTextManager.Instance.ShowDamage(100, transform.position);
+            PopupTextManager.Instance.ShowDamageCrit(200, transform.position + Vector3.right * 2);
+        }
+    }
+
 }

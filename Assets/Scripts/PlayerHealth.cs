@@ -3,36 +3,39 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int maxHealth = 100;
-    public int currentHealth;
+    [Header("Stats (ScriptableObject)")]
+    public CharacterStatsData playerStats; 
 
     public Image healthFillImage;
-
     private Animator animator;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
+
+        // Đồng bộ máu ban đầu từ stats
+        if (playerStats != null)
+        {
+            playerStats.currentHP = playerStats.maxHP;
+            UpdateHealthUI();
+        }
     }
 
-    void Awake()
-    {
-        currentHealth = maxHealth;
-        UpdateHealthUI();
-    }
     public void TakeDamage(int damage)
     {
-        currentHealth -= damage;
-        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        if (playerStats == null) return;
 
-        animator.SetTrigger("Hurt");
+        // Tính toán damage dựa trên phòng thủ
+        int finalDamage = Mathf.Max(0, damage - playerStats.defense);
+        playerStats.currentHP -= finalDamage;
+        playerStats.currentHP = Mathf.Clamp(playerStats.currentHP, 0, playerStats.maxHP);
 
-        //gọi popup text để hiển thị sát thương nhân vào
-        PopupTextManager.Instance.ShowDamage(damage, transform.position + Vector3.up * 0.5f);
+        // Popup sát thương
+        PopupTextManager.Instance.ShowDamage(finalDamage, transform.position + Vector3.up * 0.5f);
 
         UpdateHealthUI();
 
-        if (currentHealth <= 0)
+        if (playerStats.currentHP <= 0)
         {
             Die();
         }
@@ -40,21 +43,22 @@ public class PlayerHealth : MonoBehaviour
 
     void UpdateHealthUI()
     {
-        if (healthFillImage != null)
+        if (healthFillImage != null && playerStats != null)
         {
-            healthFillImage.fillAmount = (float)currentHealth / maxHealth;
+            healthFillImage.fillAmount = (float)playerStats.currentHP / playerStats.maxHP;
         }
     }
 
     void Die()
     {
-        Debug.Log("Player chết!");
+        Debug.Log($"{playerStats.characterName} đã chết!");
 
         if (animator != null)
             animator.SetTrigger("Die");
 
-        this.enabled = false;
+        AudioManager.Instance.PlayPlayerDeath();
 
+        this.enabled = false;
         Destroy(gameObject, 1.5f);
     }
 }

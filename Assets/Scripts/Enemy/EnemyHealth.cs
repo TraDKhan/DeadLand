@@ -8,6 +8,13 @@ public class EnemyHealth : MonoBehaviour
     private int currentHealth;
     public Image healthFillImage;
 
+    [Header("Audio Death")]
+    public AudioClip enemyDeathClip;
+
+    [Header("EXP")]
+    public int expReward = 50;
+    public CharacterStatsData playerStats;
+
     [HideInInspector] public bool isDead = false;
 
     private Animator animator;
@@ -31,15 +38,16 @@ public class EnemyHealth : MonoBehaviour
 
         currentHealth -= damage;
 
-        PopupTextManager.Instance.ShowDamage(damage, transform.position + Vector3.up * 0.5f);
-
         UpdateHealthUI();
+
+        
 
         if (animator != null)
             animator.SetTrigger("Hurt");
 
         if (currentHealth <= 0)
         {
+            AudioManager.Instance.PlayEnemyDeath(enemyDeathClip);
             Die();
         }
     }
@@ -71,6 +79,10 @@ public class EnemyHealth : MonoBehaviour
     // gọi từ event cuối animation Die
     public void OnDeathAnimationEnd()
     {
+        if (playerStats != null)
+        {
+            playerStats.GainExp(expReward);
+        }
         Destroy(gameObject);
     }
 }

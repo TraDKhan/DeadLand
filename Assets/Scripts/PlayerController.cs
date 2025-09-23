@@ -3,6 +3,9 @@
 [RequireComponent(typeof(Animator))]
 public class PlayerController : MonoBehaviour
 {
+    [Header("Stats")]
+    public CharacterStatsData playerStats;
+
     [Header("Attack Settings")]
     public int attackDamage = 1;
     public float attackCooldown = 0.5f;
@@ -16,6 +19,11 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+
+        if (playerStats != null)
+        {
+            playerStats.currentMP = playerStats.maxMP;
+        }
     }
 
     void Update()
@@ -34,7 +42,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Z)) // 🟢 phím mở popup để nhập số lượng vứt
+        if (Input.GetKeyDown(KeyCode.Z))
         {
             DropCustomAmount();
         }
@@ -54,6 +62,8 @@ public class PlayerController : MonoBehaviour
 
             UpdateAttackPointDirection();
             animator.SetTrigger("Attack");
+
+            AudioManager.Instance.PlayPlayerAttack();
         }
     }
     public void Damage()
@@ -62,9 +72,27 @@ public class PlayerController : MonoBehaviour
         Collider2D[] hits = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayer);
         foreach (Collider2D enemy in hits)
         {
-            enemy.GetComponent<EnemyHealth>()?.TakeDamage(attackDamage); 
+            if (playerStats != null)
+            {
+                int damage = playerStats.damage;
+                bool isCrit = Random.value < playerStats.critChance;
+
+                if (isCrit)
+                {
+                    damage = Mathf.RoundToInt(damage * playerStats.critDamage);
+                    PopupTextManager.Instance.ShowDamageCrit(damage, enemy.transform.position);
+                    Debug.Log("🔥 Chí mạng!");
+                }
+                else
+                {
+                    PopupTextManager.Instance.ShowDamage(damage, enemy.transform.position);
+                }
+
+                enemy.GetComponent<EnemyHealth>()?.TakeDamage(damage);
+            }
         }
     }
+
     void UpdateAttackPointDirection()
     {
         float attackX = animator.GetFloat("LastMoveX");

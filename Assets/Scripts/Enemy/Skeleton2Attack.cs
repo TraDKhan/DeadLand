@@ -38,7 +38,8 @@ public class Skeleton2Attack : MonoBehaviour, IAttackBehavior
         Collider2D hit = Physics2D.OverlapCircle(transform.position, attackRange, playerLayer);
         if (hit != null)
         {
-            hit.GetComponent<PlayerHealth>()?.TakeDamage(damage);
+            hit.GetComponent<PlayerHealth>()?.TakeDamage(damage); 
+            AudioManager.Instance.PlaySkeleton2Attack();
             Debug.Log($"{gameObject.name} gây {damage} vào {hit.name}");
         }
     }

@@ -47,7 +47,8 @@ public class GhostAttack : MonoBehaviour, IAttackBehavior
             if (player != null)
             {
                 player.TakeDamage(damage);
-                Debug.Log($"👻 GhostAttack: Gây {damage} sát thương vào {hit.name}");
+
+                AudioManager.Instance.PlayGhostAttack();
 
                 if (enableDoT)
                 {

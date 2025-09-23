@@ -32,6 +32,7 @@ public class ItemPickup : MonoBehaviour
             if (InventoryManager.Instance != null)
             {
                 PopupTextManager.Instance.ShowText($"+ {amount} {itemData.itemName}",transform.position, Color.blue, 1f);
+                AudioManager.Instance.PlayPickupItem();
                 InventoryManager.Instance.AddItem(itemData, amount);
             }
 

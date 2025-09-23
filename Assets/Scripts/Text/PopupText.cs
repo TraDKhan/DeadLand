@@ -28,23 +28,21 @@ public class PopupText : MonoBehaviour
             Destroy(gameObject);
     }
 
-    public void Setup(string message, Vector3 worldPosition, Camera uiCamera)
+    public void Setup(string message, Vector3 worldPosition, Camera uiCamera, Color color, float scale)
     {
         textMesh.text = message;
 
-        // Chuyển world → screen
         Vector3 screenPos = uiCamera.WorldToScreenPoint(worldPosition);
-
-        // Chuyển screen → local UI position
-        Vector2 localPoint;
         RectTransformUtility.ScreenPointToLocalPointInRectangle(
-            transform.parent as RectTransform, // hoặc uiCanvas.transform nếu bạn truyền vào
+            transform.parent as RectTransform,
             screenPos,
             uiCamera,
-            out localPoint
+            out Vector2 localPoint
         );
 
         rectTransform.anchoredPosition = localPoint;
+        rectTransform.localScale = Vector3.one * scale;
+        textMesh.color = color;
 
         timer = 0f;
         canvasGroup.alpha = 1f;
