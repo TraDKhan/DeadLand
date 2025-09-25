@@ -23,7 +23,12 @@ public class PlayerController : MonoBehaviour
 
         if (playerStats != null)
         {
-            runtimeStats = new Character(playerStats); // tạo runtime nhân vật từ SO
+            runtimeStats = new Character(playerStats);
+            Debug.Log("✅ runtimeStats đã được khởi tạo");
+        }
+        else
+        {
+            Debug.LogWarning("⚠️ playerStats chưa được gán!");
         }
     }
 
@@ -119,6 +124,9 @@ public class PlayerController : MonoBehaviour
         if (runtimeStats == null) return;
         runtimeStats.Equip(item);
         Debug.Log($"🔧 Đã trang bị {item.itemName} ({item.equipmentType})");
+
+        CharacterStatsUI ui = GameObject.FindObjectOfType<CharacterStatsUI>();
+        if (ui != null) ui.UpdateUI();
     }
 
     public void UnequipItem(EquipmentType type)
@@ -126,6 +134,9 @@ public class PlayerController : MonoBehaviour
         if (runtimeStats == null) return;
         runtimeStats.Unequip(type);
         Debug.Log($"❌ Đã tháo trang bị {type}");
+
+        CharacterStatsUI ui = GameObject.FindObjectOfType<CharacterStatsUI>();
+        if (ui != null) ui.UpdateUI();
     }
 
     //============= XU LY ITEM ===========//

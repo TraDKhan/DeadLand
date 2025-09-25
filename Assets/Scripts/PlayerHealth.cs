@@ -14,11 +14,15 @@ public class PlayerHealth : MonoBehaviour
     private void Start()
     {
         animator = GetComponent<Animator>();
+    }
 
+    private void Awake()
+    {
         if (playerStats != null)
         {
             // Tạo runtime từ SO
             runtimeStats = new Character(playerStats);
+            Debug.Log("Đã khơi tạo dữ liệu SO");
 
             // Đồng bộ máu ban đầu
             runtimeStats.currentHP = runtimeStats.maxHP;
@@ -29,7 +33,6 @@ public class PlayerHealth : MonoBehaviour
             Debug.LogError("⚠ PlayerStats chưa được gán trong Inspector!");
         }
     }
-
     public void TakeDamage(int damage)
     {
         if (runtimeStats == null) return;
@@ -75,5 +78,14 @@ public class PlayerHealth : MonoBehaviour
     public Character GetRuntimeStats()
     {
         return runtimeStats;
+    }
+    public void EquipItem(EquipmentData item)
+    {
+        if (runtimeStats == null) return;
+        runtimeStats.Equip(item);
+        Debug.Log($"🔧 Đã trang bị {item.itemName} ({item.equipmentType})");
+
+        CharacterStatsUI ui = GameObject.FindObjectOfType<CharacterStatsUI>();
+        if (ui != null) ui.UpdateUI();
     }
 }

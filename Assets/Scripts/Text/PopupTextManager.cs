@@ -37,13 +37,8 @@ public class PopupTextManager : MonoBehaviour
     {
         ShowText(damageAmount.ToString(), worldPos, Color.yellow, 1.3f);
     }
-    void Update()
+    public void ShowEXP(int exp, Vector3 worldPos)
     {
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            PopupTextManager.Instance.ShowDamage(100, transform.position);
-            PopupTextManager.Instance.ShowDamageCrit(200, transform.position + Vector3.right * 2);
-        }
+        ShowText($"+ {exp.ToString()} Exp", worldPos + Vector3.right * 0.2f, Color.green, 1.3f);
     }
-
 }

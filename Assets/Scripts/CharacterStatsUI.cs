@@ -1,5 +1,6 @@
 ﻿using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CharacterStatsUI : MonoBehaviour
 {
@@ -17,6 +18,9 @@ public class CharacterStatsUI : MonoBehaviour
     public TextMeshProUGUI mpText;
     public TextMeshProUGUI critChanceText;
     public TextMeshProUGUI critDamageText;
+
+    [Header("EXP")]
+    public Image expFillImage;
     public TextMeshProUGUI expText;
 
     void Start()
@@ -24,31 +28,33 @@ public class CharacterStatsUI : MonoBehaviour
         if (playerHealth != null)
         {
             runtimeStats = playerHealth.GetRuntimeStats();
+            Debug.Log("đã gọi playerHealth.GetRuntimeStats()");
         }
-
         UpdateUI();
     }
-
-    void Update()
-    {
-        // Cập nhật realtime (HP, MP thay đổi liên tục)
-        UpdateUI();
-    }
-
     public void UpdateUI()
     {
-        if (runtimeStats == null) return;
+        Debug.Log("Đang kiểm tra runtimeStats...");
+        if (runtimeStats == null)
+        {
+            Debug.LogWarning("⚠ runtimeStats vẫn là null!");
+            return;
+        }
+        Debug.Log("runtimeStats đã khởi tạo");
 
         nameText.text = runtimeStats.characterName;
         levelText.text = $"Cấp độ: {runtimeStats.level}";
-        damageText.text = $"Sát thương: {runtimeStats.damage}";
-        defenseText.text = $"Phòng thủ: {runtimeStats.defense}";
-        hpText.text = $"HP: {runtimeStats.currentHP}/{runtimeStats.maxHP}";
-        mpText.text = $"MP: {runtimeStats.currentMP}/{runtimeStats.maxMP}";
-        critChanceText.text = $"Tỉ lệ chí mạng: {(runtimeStats.critChance * 100):F1}%";
-        critDamageText.text = $"ST Chí mạng: {runtimeStats.critDamage}x";
+        damageText.text = $"Sát thương: {runtimeStats.GetTotalDamage()}";
+        defenseText.text = $"Phòng thủ: {runtimeStats.GetTotalDefense()}";
+        hpText.text = $"HP: {runtimeStats.currentHP}/{runtimeStats.GetTotalMaxHP()}";
+        mpText.text = $"MP: {runtimeStats.currentMP}/{runtimeStats.GetTotalMaxMP()}";
+        critChanceText.text = $"Tỉ lệ chí mạng: {(runtimeStats.GetTotalCritChance() * 100):F1}%";
+        critDamageText.text = $"ST Chí mạng: {runtimeStats.GetTotalCritDamage():F1}x";
 
-        // 🟢 EXP hiển thị
         expText.text = $"EXP: {runtimeStats.exp}/{runtimeStats.expToNextLevel}";
+        if (expFillImage != null)
+        {
+            expFillImage.fillAmount = (float)runtimeStats.exp / runtimeStats.expToNextLevel;
+        }
     }
 }

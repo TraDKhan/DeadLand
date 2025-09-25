@@ -68,6 +68,13 @@ public class EnemyHealth : MonoBehaviour
         if (animator != null)
             animator.SetTrigger("Die");
 
+        if (playerHealth != null)
+        {
+            playerHealth.GetRuntimeStats().GainExp(expReward);
+            PopupTextManager.Instance.ShowEXP(expReward, transform.position);
+            Debug.Log($"<color=yellow>Player nhận {expReward} EXP</color>");
+        }
+
         if (ec != null)
             ec.enabled = false;
 
@@ -79,11 +86,6 @@ public class EnemyHealth : MonoBehaviour
     // gọi từ event cuối animation Die
     public void OnDeathAnimationEnd()
     {
-        if (playerHealth != null)
-        {
-            playerHealth.GetRuntimeStats().GainExp(expReward);
-            Debug.Log($"<color=yellow>Player nhận {expReward} EXP</color>");
-        }
         Destroy(gameObject);
     }
 }
