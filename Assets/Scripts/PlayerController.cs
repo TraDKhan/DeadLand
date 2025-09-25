@@ -5,6 +5,7 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Stats")]
     public CharacterStatsData playerStats;
+    private Character runtimeStats;
 
     [Header("Attack Settings")]
     public int attackDamage = 1;
@@ -22,7 +23,7 @@ public class PlayerController : MonoBehaviour
 
         if (playerStats != null)
         {
-            playerStats.currentMP = playerStats.maxMP;
+            runtimeStats = new Character(playerStats); // tạo runtime nhân vật từ SO
         }
     }
 
@@ -68,28 +69,27 @@ public class PlayerController : MonoBehaviour
     }
     public void Damage()
     {
+        if (runtimeStats == null) return;
+
         // Phát hiện enemy trong vùng đòn đánh
         Collider2D[] hits = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayer);
         foreach (Collider2D enemy in hits)
         {
-            if (playerStats != null)
+            int damage = runtimeStats.GetTotalDamage();
+            bool isCrit = Random.value < runtimeStats.GetTotalCritChance();
+
+            if (isCrit)
             {
-                int damage = playerStats.damage;
-                bool isCrit = Random.value < playerStats.critChance;
-
-                if (isCrit)
-                {
-                    damage = Mathf.RoundToInt(damage * playerStats.critDamage);
-                    PopupTextManager.Instance.ShowDamageCrit(damage, enemy.transform.position);
-                    Debug.Log("🔥 Chí mạng!");
-                }
-                else
-                {
-                    PopupTextManager.Instance.ShowDamage(damage, enemy.transform.position);
-                }
-
-                enemy.GetComponent<EnemyHealth>()?.TakeDamage(damage);
+                damage = Mathf.RoundToInt(damage * runtimeStats.GetTotalCritDamage());
+                PopupTextManager.Instance.ShowDamageCrit(damage, enemy.transform.position);
+                Debug.Log("🔥 Chí mạng!");
             }
+            else
+            {
+                PopupTextManager.Instance.ShowDamage(damage, enemy.transform.position);
+            }
+
+            enemy.GetComponent<EnemyHealth>()?.TakeDamage(damage);
         }
     }
 
@@ -112,6 +112,20 @@ public class PlayerController : MonoBehaviour
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(attackPoint.position, attackRange);
         }
+    }
+    //============= EQUIP / UNEQUIP ===========//
+    public void EquipItem(EquipmentData item)
+    {
+        if (runtimeStats == null) return;
+        runtimeStats.Equip(item);
+        Debug.Log($"🔧 Đã trang bị {item.itemName} ({item.equipmentType})");
+    }
+
+    public void UnequipItem(EquipmentType type)
+    {
+        if (runtimeStats == null) return;
+        runtimeStats.Unequip(type);
+        Debug.Log($"❌ Đã tháo trang bị {type}");
     }
 
     //============= XU LY ITEM ===========//

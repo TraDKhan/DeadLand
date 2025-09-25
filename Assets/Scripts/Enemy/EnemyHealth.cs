@@ -13,7 +13,7 @@ public class EnemyHealth : MonoBehaviour
 
     [Header("EXP")]
     public int expReward = 50;
-    public CharacterStatsData playerStats;
+    public PlayerHealth playerHealth;
 
     [HideInInspector] public bool isDead = false;
 
@@ -79,9 +79,10 @@ public class EnemyHealth : MonoBehaviour
     // gọi từ event cuối animation Die
     public void OnDeathAnimationEnd()
     {
-        if (playerStats != null)
+        if (playerHealth != null)
         {
-            playerStats.GainExp(expReward);
+            playerHealth.GetRuntimeStats().GainExp(expReward);
+            Debug.Log($"<color=yellow>Player nhận {expReward} EXP</color>");
         }
         Destroy(gameObject);
     }

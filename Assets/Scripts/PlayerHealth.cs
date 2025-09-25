@@ -3,8 +3,10 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [Header("Stats (ScriptableObject)")]
-    public CharacterStatsData playerStats; 
+    [Header("Stats Template (SO)")]
+    public CharacterStatsData playerStats; // SO template
+
+    private Character runtimeStats; // runtime data
 
     public Image healthFillImage;
     private Animator animator;
@@ -13,29 +15,36 @@ public class PlayerHealth : MonoBehaviour
     {
         animator = GetComponent<Animator>();
 
-        // Đồng bộ máu ban đầu từ stats
         if (playerStats != null)
         {
-            playerStats.currentHP = playerStats.maxHP;
+            // Tạo runtime từ SO
+            runtimeStats = new Character(playerStats);
+
+            // Đồng bộ máu ban đầu
+            runtimeStats.currentHP = runtimeStats.maxHP;
             UpdateHealthUI();
+        }
+        else
+        {
+            Debug.LogError("⚠ PlayerStats chưa được gán trong Inspector!");
         }
     }
 
     public void TakeDamage(int damage)
     {
-        if (playerStats == null) return;
+        if (runtimeStats == null) return;
 
         // Tính toán damage dựa trên phòng thủ
-        int finalDamage = Mathf.Max(0, damage - playerStats.defense);
-        playerStats.currentHP -= finalDamage;
-        playerStats.currentHP = Mathf.Clamp(playerStats.currentHP, 0, playerStats.maxHP);
+        int finalDamage = Mathf.Max(0, damage - runtimeStats.GetTotalDefense());
+        runtimeStats.currentHP -= finalDamage;
+        runtimeStats.currentHP = Mathf.Clamp(runtimeStats.currentHP, 0, runtimeStats.GetTotalMaxHP());
 
         // Popup sát thương
         PopupTextManager.Instance.ShowDamage(finalDamage, transform.position + Vector3.up * 0.5f);
 
         UpdateHealthUI();
 
-        if (playerStats.currentHP <= 0)
+        if (runtimeStats.currentHP <= 0)
         {
             Die();
         }
@@ -43,15 +52,15 @@ public class PlayerHealth : MonoBehaviour
 
     void UpdateHealthUI()
     {
-        if (healthFillImage != null && playerStats != null)
+        if (healthFillImage != null && runtimeStats != null)
         {
-            healthFillImage.fillAmount = (float)playerStats.currentHP / playerStats.maxHP;
+            healthFillImage.fillAmount = (float)runtimeStats.currentHP / runtimeStats.GetTotalMaxHP();
         }
     }
 
     void Die()
     {
-        Debug.Log($"{playerStats.characterName} đã chết!");
+        Debug.Log($"{runtimeStats.characterName} đã chết!");
 
         if (animator != null)
             animator.SetTrigger("Die");
@@ -60,5 +69,11 @@ public class PlayerHealth : MonoBehaviour
 
         this.enabled = false;
         Destroy(gameObject, 1.5f);
+    }
+
+    // 🟢 Cho phép PlayerController hoặc UI lấy runtime stats để đồng bộ
+    public Character GetRuntimeStats()
+    {
+        return runtimeStats;
     }
 }
