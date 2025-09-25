@@ -4,7 +4,6 @@
 public class PlayerController : MonoBehaviour
 {
     [Header("Stats")]
-    public CharacterStatsData playerStats;
     private Character runtimeStats;
 
     [Header("Attack Settings")]
@@ -20,16 +19,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-
-        if (playerStats != null)
-        {
-            runtimeStats = new Character(playerStats);
-            Debug.Log("✅ runtimeStats đã được khởi tạo");
-        }
-        else
-        {
-            Debug.LogWarning("⚠️ playerStats chưa được gán!");
-        }
+        runtimeStats = PlayerStatsManager.Instance.GetRuntimeStats();
     }
 
     void Update()

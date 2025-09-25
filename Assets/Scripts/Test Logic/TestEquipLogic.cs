@@ -2,7 +2,7 @@
 
 public class TestEquipLogic : MonoBehaviour
 {
-    public PlayerHealth player;
+    public PlayerController player;
 
     void Start()
     {

@@ -9,10 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92d39f4b16d8aa0419ba1ed28ef0fdab, type: 3}
-  m_Name: Sword 1
+  m_Script: {fileID: 11500000, guid: f3b68adebf7bbeb46908706355a9bbc8, type: 3}
+  m_Name: Ring-Item
   m_EditorClassIdentifier: 
   itemName: 
-  icon: {fileID: 0}
-  stackable: 1
-  worldPrefab: {fileID: 0}
+  equipmentType: 0
+  bonusDamage: 0
+  bonusDefense: 0
+  bonusHP: 0
+  bonusMP: 0
+  bonusCritChance: 10
+  bonusCritDamage: 20
