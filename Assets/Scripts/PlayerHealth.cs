@@ -11,13 +11,13 @@ public class PlayerHealth : MonoBehaviour
 
     private void Start()
     {
-        
+                animator = GetComponent<Animator>();
+        runtimeStats = PlayerStatsManager.Instance.GetRuntimeStats();
     }
 
     private void Awake()
     {
-        animator = GetComponent<Animator>();
-        runtimeStats = PlayerStatsManager.Instance.GetRuntimeStats();
+
     }
     public void TakeDamage(int damage)
     {
