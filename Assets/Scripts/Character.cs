@@ -60,8 +60,7 @@ public class Character
         }
 
         // Cập nhật UI sau khi nhận EXP
-        CharacterStatsUI ui = GameObject.FindObjectOfType<CharacterStatsUI>();
-        if (ui != null) ui.UpdateUI();
+        CharacterStatsUI.Instance?.UpdateUI();
     }
 
 

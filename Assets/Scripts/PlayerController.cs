@@ -115,8 +115,7 @@ public class PlayerController : MonoBehaviour
         runtimeStats.Equip(item);
         Debug.Log($"🔧 Đã trang bị {item.itemName} ({item.equipmentType})");
 
-        CharacterStatsUI ui = GameObject.FindObjectOfType<CharacterStatsUI>();
-        if (ui != null) ui.UpdateUI();
+        CharacterStatsUI.Instance?.UpdateUI();
     }
 
     public void UnequipItem(EquipmentType type)
@@ -125,8 +124,7 @@ public class PlayerController : MonoBehaviour
         runtimeStats.Unequip(type);
         Debug.Log($"❌ Đã tháo trang bị {type}");
 
-        CharacterStatsUI ui = GameObject.FindObjectOfType<CharacterStatsUI>();
-        if (ui != null) ui.UpdateUI();
+        CharacterStatsUI.Instance?.UpdateUI();
     }
 
     //============= XU LY ITEM ===========//

@@ -4,8 +4,9 @@ using UnityEngine.UI;
 
 public class CharacterStatsUI : MonoBehaviour
 {
+    public static CharacterStatsUI Instance;
     [Header("Nguồn dữ liệu (runtime)")]
-    public PlayerStatsManager playerHealth; // Lấy runtime stats thông qua PlayerHealth
+    public PlayerStatsManager playerHealth; 
 
     private Character runtimeStats;
 
