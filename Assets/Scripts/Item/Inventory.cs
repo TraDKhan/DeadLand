@@ -59,17 +59,4 @@ public class Inventory : MonoBehaviour
                 InventoryUI.Instance.RefreshUI();
         }
     }
-
-    //public void DropItem(ItemData data, int amount, Vector3 dropPosition)
-    //{
-    //    RemoveItem(data, amount);
-
-    //    if (data != null && data.worldPrefab != null)
-    //    {
-    //        for (int i = 0; i < amount; i++)
-    //        {
-    //            Instantiate(data.worldPrefab, dropPosition, Quaternion.identity);
-    //        }
-    //    }
-    //}
 }

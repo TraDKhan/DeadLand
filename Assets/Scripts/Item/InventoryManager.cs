@@ -160,4 +160,141 @@ public class InventoryManager : MonoBehaviour
         // 🟢 Gọi UI popup nhập số lượng
         DropAmountUI.Instance.Show(InventoryUI.Instance.selectedItem);
     }
+
+    // ===========================
+
+    // 🟢 Trang bị item từ inventory
+    // 🟢 Trang bị item từ inventory
+    public void EquipItem(InventoryItem item, Character character)
+    {
+        if (item == null || item.itemData == null) return;
+
+        if (item.itemData.itemType == ItemType.Equipment)
+        {
+            character.Equip(item.itemData);
+            Debug.Log($"🔧 Trang bị {item.itemData.itemName} ({item.itemData.equipmentType})");
+
+            CharacterStatsUI.Instance?.UpdateUI();
+            InventoryUI.Instance?.RefreshUI();
+        }
+        else
+        {
+            Debug.LogWarning($"❌ {item.itemData.itemName} không phải là trang bị!");
+        }
+    }
+
+    // 🟢 Tháo trang bị (và trả lại vào Inventory nếu cần)
+    public void UnequipItem(EquipmentType type, Character character)
+    {
+        if (character == null)
+        {
+            Debug.LogWarning("❌ Chưa có Character để tháo trang bị!");
+            return;
+        }
+
+        ItemData unequipped = null;
+
+        switch (type)
+        {
+            case EquipmentType.Weapon:
+                unequipped = character.weapon;
+                character.Unequip(EquipmentType.Weapon);
+                break;
+            case EquipmentType.Armor:
+                unequipped = character.armor;
+                character.Unequip(EquipmentType.Armor);
+                break;
+            case EquipmentType.Ring:
+                unequipped = character.ring;
+                character.Unequip(EquipmentType.Ring);
+                break;
+            case EquipmentType.Necklace:
+                unequipped = character.necklace;
+                character.Unequip(EquipmentType.Necklace);
+                break;
+        }
+
+        if (unequipped != null)
+        {
+            AddItem(unequipped, 1); // trả lại vào balo
+            Debug.Log($"❌ Đã tháo trang bị {unequipped.itemName} ({type})");
+        }
+
+        CharacterStatsUI.Instance?.UpdateUI();
+        InventoryUI.Instance?.RefreshUI();
+    }
+    public void EquipFromUI(InventoryItem item)
+    {
+        if (item == null || item.itemData == null)
+        {
+            Debug.LogWarning("❌ Không có item để trang bị!");
+            return;
+        }
+
+        if (item.itemData.itemType == ItemType.Equipment)
+        {
+            // Giả sử bạn có tham chiếu tới nhân vật
+            Character character = PlayerStatsManager.Instance.GetRuntimeStats();
+
+            if (character == null)
+            {
+                Debug.LogWarning("❌ Chưa có nhân vật để trang bị!");
+                return;
+            }
+
+            // Bỏ 1 món ra khỏi inventory
+            if (item.amount > 1)
+            {
+                item.amount -= 1;
+            }
+            else
+            {
+                items.Remove(item);
+            }
+
+            // Trang bị
+            character.Equip(item.itemData);
+            Debug.Log($"🔧 Trang bị {item.itemData.itemName} ({item.itemData.equipmentType})");
+
+            CharacterStatsUI.Instance?.UpdateUI();
+            InventoryUI.Instance?.RefreshUI();
+        }
+        else
+        {
+            Debug.LogWarning($"❌ {item.itemData.itemName} không phải là trang bị!");
+        }
+    }
+    // 🟢 Dùng potion (tạm thời chỉ log)
+    public void UsePotion(InventoryItem item)
+    {
+        if (item == null || item.itemData == null)
+        {
+            Debug.LogWarning("❌ Không có item để dùng!");
+            return;
+        }
+
+        if (item.itemData.itemType == ItemType.Potion)
+        {
+            // Giảm số lượng
+            if (item.amount > 1)
+            {
+                item.amount -= 1;
+            }
+            else
+            {
+                items.Remove(item);
+            }
+
+            // Log
+            Debug.Log($"🍷 Đã dùng {item.itemData.itemName} (còn lại {item.amount})");
+
+            // Cập nhật UI
+            InventoryUI.Instance?.RefreshUI();
+        }
+        else
+        {
+            Debug.LogWarning($"❌ {item.itemData.itemName} không phải là potion để dùng!");
+        }
+    }
+
 }
