@@ -6,12 +6,12 @@ public class Inventory : MonoBehaviour
     [System.Serializable]
     public class InventorySlot
     {
-        public ItemType itemType;
+        public ItemData itemData;
         public int amount;
 
-        public InventorySlot(ItemType type, int amt)
+        public InventorySlot(ItemData data, int amt)
         {
-            itemType = type;
+            itemData = data;
             amount = amt;
         }
     }
@@ -19,11 +19,13 @@ public class Inventory : MonoBehaviour
     public int maxSlots = 20;
     public List<InventorySlot> items = new List<InventorySlot>();
 
-    public void AddItem(ItemType type, int amount)
+    public void AddItem(ItemData data, int amount)
     {
-        // Nếu item có thể cộng dồn (Gold, Potion) → cộng vào slot có sẵn
-        InventorySlot existing = items.Find(i => i.itemType == type);
-        if (existing != null && CanStack(type))
+        if (data == null) return;
+
+        // Nếu item có thể cộng dồn → cộng vào slot có sẵn
+        InventorySlot existing = items.Find(i => i.itemData == data);
+        if (existing != null && data.stackable)
         {
             existing.amount += amount;
         }
@@ -31,11 +33,11 @@ public class Inventory : MonoBehaviour
         {
             if (items.Count < maxSlots)
             {
-                items.Add(new InventorySlot(type, amount));
+                items.Add(new InventorySlot(data, amount));
             }
             else
             {
-                Debug.Log("Balo đã đầy!");
+                Debug.Log("⚠️ Balo đã đầy!");
             }
         }
 
@@ -44,8 +46,30 @@ public class Inventory : MonoBehaviour
             InventoryUI.Instance.RefreshUI();
     }
 
-    private bool CanStack(ItemType type)
+    public void RemoveItem(ItemData data, int amount)
     {
-        return type == ItemType.Gold || type == ItemType.HpPotion || type == ItemType.MpPotion;
+        InventorySlot existing = items.Find(i => i.itemData == data);
+        if (existing != null)
+        {
+            existing.amount -= amount;
+            if (existing.amount <= 0)
+                items.Remove(existing);
+
+            if (InventoryUI.Instance != null)
+                InventoryUI.Instance.RefreshUI();
+        }
     }
+
+    //public void DropItem(ItemData data, int amount, Vector3 dropPosition)
+    //{
+    //    RemoveItem(data, amount);
+
+    //    if (data != null && data.worldPrefab != null)
+    //    {
+    //        for (int i = 0; i < amount; i++)
+    //        {
+    //            Instantiate(data.worldPrefab, dropPosition, Quaternion.identity);
+    //        }
+    //    }
+    //}
 }

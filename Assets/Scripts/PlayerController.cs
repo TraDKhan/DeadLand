@@ -25,23 +25,6 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         HandleAttack();
-
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
-            {
-                DropAllSelected();
-            }
-            else
-            {
-                DropOneSelected();
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            DropCustomAmount();
-        }
     }
     
     void HandleAttack()
@@ -109,70 +92,31 @@ public class PlayerController : MonoBehaviour
         }
     }
     //============= EQUIP / UNEQUIP ===========//
-    public void EquipItem(EquipmentData item)
+    public void EquipItem(ItemData item)
     {
         if (runtimeStats == null) return;
-        runtimeStats.Equip(item);
-        Debug.Log($"🔧 Đã trang bị {item.itemName} ({item.equipmentType})");
 
-        CharacterStatsUI.Instance?.UpdateUI();
+        // Chỉ cho phép trang bị nếu item là Equipment
+        if (item.itemType == ItemType.Equipment)
+        {
+            runtimeStats.Equip(item);
+            Debug.Log($"🔧 Đã trang bị {item.itemName} ({item.equipmentType})");
+
+            CharacterStatsUI.Instance?.UpdateUI();
+        }
+        else
+        {
+            Debug.LogWarning($"❌ {item.itemName} không phải là trang bị, không thể equip!");
+        }
     }
 
     public void UnequipItem(EquipmentType type)
     {
         if (runtimeStats == null) return;
+
         runtimeStats.Unequip(type);
         Debug.Log($"❌ Đã tháo trang bị {type}");
 
         CharacterStatsUI.Instance?.UpdateUI();
-    }
-
-    //============= XU LY ITEM ===========//
-    private void DropOneSelected()
-    {
-        if (InventoryUI.Instance.selectedItem == null)
-        {
-            Debug.Log("Chưa chọn item nào để vứt!");
-            return;
-        }
-
-        InventoryItem selected = InventoryUI.Instance.selectedItem;
-        Vector3 dropPos = transform.position + transform.right * 1f;
-
-        InventoryManager.Instance.DropItem(selected.itemData, 1, dropPos);
-        Debug.Log($"Đã vứt 1 {selected.itemData.itemName}");
-
-        if (selected.amount <= 0)
-            InventoryUI.Instance.selectedItem = null;
-    }
-
-    private void DropAllSelected()
-    {
-        if (InventoryUI.Instance.selectedItem == null)
-        {
-            Debug.Log("Chưa chọn item nào để vứt!");
-            return;
-        }
-
-        InventoryItem selected = InventoryUI.Instance.selectedItem;
-        int amount = selected.amount;
-        Vector3 dropPos = transform.position + transform.right * 1f;
-
-        InventoryManager.Instance.DropItem(selected.itemData, amount, dropPos);
-        Debug.Log($"Đã vứt toàn bộ {amount} {selected.itemData.itemName}");
-
-        InventoryUI.Instance.selectedItem = null;
-    }
-
-    private void DropCustomAmount()
-    {
-        if (InventoryUI.Instance.selectedItem == null)
-        {
-            Debug.Log("Chưa chọn item nào để vứt!");
-            return;
-        }
-
-        // 🟢 Gọi UI popup nhập số lượng
-        DropAmountUI.Instance.Show(InventoryUI.Instance.selectedItem);
     }
 }

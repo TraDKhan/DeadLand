@@ -14,6 +14,26 @@ public class InventoryManager : MonoBehaviour
         else Destroy(gameObject);
     }
 
+    private void Update()
+    {
+
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+            {
+                DropAllSelected();
+            }
+            else
+            {
+                DropOneSelected();
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            DropCustomAmount();
+        }
+    }
     public void AddItem(ItemData newItem, int amount = 1)
     {
         if (newItem == null)
@@ -91,5 +111,53 @@ public class InventoryManager : MonoBehaviour
         }
 
         InventoryUI.Instance.RefreshUI();
+    }
+    //============= XU LY ITEM ===========//
+    private void DropOneSelected()
+    {
+        if (InventoryUI.Instance.selectedItem == null)
+        {
+            Debug.Log("Chưa chọn item nào để vứt!");
+            return;
+        }
+
+        InventoryItem selected = InventoryUI.Instance.selectedItem;
+        Vector3 dropPos = transform.position + transform.right * 1f;
+
+        DropItem(selected.itemData, 1, dropPos);
+        Debug.Log($"Đã vứt 1 {selected.itemData.itemName}");
+
+        if (selected.amount <= 0)
+            InventoryUI.Instance.selectedItem = null;
+    }
+
+    private void DropAllSelected()
+    {
+        if (InventoryUI.Instance.selectedItem == null)
+        {
+            Debug.Log("Chưa chọn item nào để vứt!");
+            return;
+        }
+
+        InventoryItem selected = InventoryUI.Instance.selectedItem;
+        int amount = selected.amount;
+        Vector3 dropPos = transform.position + transform.right * 1f;
+
+        DropItem(selected.itemData, amount, dropPos);
+        Debug.Log($"Đã vứt toàn bộ {amount} {selected.itemData.itemName}");
+
+        InventoryUI.Instance.selectedItem = null;
+    }
+
+    private void DropCustomAmount()
+    {
+        if (InventoryUI.Instance.selectedItem == null)
+        {
+            Debug.Log("Chưa chọn item nào để vứt!");
+            return;
+        }
+
+        // 🟢 Gọi UI popup nhập số lượng
+        DropAmountUI.Instance.Show(InventoryUI.Instance.selectedItem);
     }
 }

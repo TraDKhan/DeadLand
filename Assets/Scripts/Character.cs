@@ -20,13 +20,13 @@ public class Character
     public float critChance;
     public float critDamage;
 
-    // Trang bị
-    public EquipmentData weapon;
-    public EquipmentData armor;
-    public EquipmentData ring;
-    public EquipmentData necklace;
+    // Trang bị (dùng ItemData thay vì EquipmentData)
+    public ItemData weapon;
+    public ItemData armor;
+    public ItemData ring;
+    public ItemData necklace;
 
-    // Constructor: khởi tạo từ ScriptableObject
+    // Constructor
     public Character(CharacterStatsData data)
     {
         template = data;
@@ -49,7 +49,7 @@ public class Character
         critDamage = data.baseCritDamage;
     }
 
-    // ===== Hệ thống EXP và Level =====
+    // ===== EXP & Level =====
     public void GainExp(int amount)
     {
         exp += amount;
@@ -59,10 +59,8 @@ public class Character
             LevelUp();
         }
 
-        // Cập nhật UI sau khi nhận EXP
         CharacterStatsUI.Instance?.UpdateUI();
     }
-
 
     private void LevelUp()
     {
@@ -80,7 +78,7 @@ public class Character
         Debug.Log($"{characterName} đã lên cấp {level}!");
     }
 
-    // ===== Các hàm lấy chỉ số cuối cùng (tính cả trang bị) =====
+    // ===== Các chỉ số cộng thêm =====
     public int GetTotalDamage()
     {
         int total = damage;
@@ -141,9 +139,11 @@ public class Character
         return total;
     }
 
-    // ===== Trang bị/Tháo trang bị =====
-    public void Equip(EquipmentData item)
+    // ===== Trang bị / Tháo trang bị =====
+    public void Equip(ItemData item)
     {
+        if (item == null || item.itemType != ItemType.Equipment) return;
+
         switch (item.equipmentType)
         {
             case EquipmentType.Weapon: weapon = item; break;

@@ -1,12 +1,25 @@
 ﻿using UnityEngine;
 
+public enum ItemType { Gold, Potion, Equipment, Material, Quest }
+public enum EquipmentType { Weapon, Armor, Ring, Necklace }
+
 [CreateAssetMenu(fileName = "NewItem", menuName = "Inventory/Item")]
 public class ItemData : ScriptableObject
 {
+    [Header("Cơ bản")]
+    public string id;
     public string itemName;
     public Sprite icon;
-    public bool stackable = true; // cho phép cộng dồn (vd: bình máu, vàng)
+    public ItemType itemType;
+    public bool stackable = true;
+    public GameObject worldPrefab;
 
-    [Header("Prefab ngoài thế giới")]
-    public GameObject worldPrefab; // prefab xuất hiện khi rơi/vứt
+    [Header("Chỉ dành cho Equipment")]
+    public EquipmentType equipmentType;
+    public int bonusDamage;
+    public int bonusDefense;
+    public int bonusHP;
+    public int bonusMP;
+    public float bonusCritChance;
+    public float bonusCritDamage;
 }
