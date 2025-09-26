@@ -28,19 +28,16 @@ public class CharacterStatsUI : MonoBehaviour
         if (playerHealth != null)
         {
             runtimeStats = playerHealth.GetRuntimeStats();
-            Debug.Log("đã gọi playerHealth.GetRuntimeStats()");
         }
         UpdateUI();
     }
     public void UpdateUI()
     {
-        Debug.Log("Đang kiểm tra runtimeStats...");
         if (runtimeStats == null)
         {
             Debug.LogWarning("⚠ runtimeStats vẫn là null!");
             return;
         }
-        Debug.Log("runtimeStats đã khởi tạo");
 
         nameText.text = runtimeStats.characterName;
         levelText.text = $"Cấp độ: {runtimeStats.level}";

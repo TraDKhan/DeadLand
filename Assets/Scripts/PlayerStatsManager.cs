@@ -23,7 +23,6 @@ public class PlayerStatsManager : MonoBehaviour
             runtimeStats = new Character(playerStatsTemplate);
             runtimeStats.currentHP = runtimeStats.maxHP;
             runtimeStats.currentMP = runtimeStats.maxMP;
-            Debug.Log("✅ PlayerStatsManager đã khởi tạo runtimeStats từ SO");
         }
         else
         {
