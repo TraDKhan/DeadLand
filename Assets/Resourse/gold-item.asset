@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92d39f4b16d8aa0419ba1ed28ef0fdab, type: 3}
+  m_Name: gold-item
+  m_EditorClassIdentifier: 
+  id: 5000
+  itemName: "V\xE0ng"
+  icon: {fileID: 4840735777579599281, guid: 40be9d9246c4ed344a71540192aab13d, type: 3}
+  itemType: 0
+  stackable: 1
+  worldPrefab: {fileID: 2692771174071287748, guid: d27ee7e7edea879448cad4a76374220d, type: 3}
+  equipmentType: 0
+  bonusDamage: 0
+  bonusDefense: 0
+  bonusHP: 0
+  bonusMP: 0
+  bonusCritChance: 0
+  bonusCritDamage: 0

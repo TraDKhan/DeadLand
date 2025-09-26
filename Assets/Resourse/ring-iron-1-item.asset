@@ -10,9 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 92d39f4b16d8aa0419ba1ed28ef0fdab, type: 3}
-  m_Name: Potion_HP
+  m_Name: ring-iron-1-item
   m_EditorClassIdentifier: 
-  itemName: "B\xECnh HP"
-  icon: {fileID: 21300000, guid: 41059b8ea8d270a42baddc2be837cf27, type: 3}
+  id: 
+  itemName: 
+  icon: {fileID: 0}
+  itemType: 2
   stackable: 1
-  worldPrefab: {fileID: 6825903420994501836, guid: 8c1bb52d18285cc46815c2554f851c7c, type: 3}
+  worldPrefab: {fileID: 0}
+  equipmentType: 2
+  bonusDamage: 0
+  bonusDefense: 0
+  bonusHP: 0
+  bonusMP: 0
+  bonusCritChance: 0
+  bonusCritDamage: 0

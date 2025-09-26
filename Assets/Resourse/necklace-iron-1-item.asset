@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 92d39f4b16d8aa0419ba1ed28ef0fdab, type: 3}
-  m_Name: Armor
+  m_Name: necklace-iron-1-item
   m_EditorClassIdentifier: 
-  id: 
-  itemName: "Gi\xE1p s\u1EAFt I"
-  icon: {fileID: 21300000, guid: f2057067eea3d1040854cbfb09426ccd, type: 3}
-  itemType: 0
-  stackable: 1
-  worldPrefab: {fileID: 0}
-  equipmentType: 0
+  id: 4000
+  itemName: "Nh\u1EABn s\u1EAFt I"
+  icon: {fileID: -4084398798631049922, guid: 733dbe1c49ab28c428c3a98f0b197a5a, type: 3}
+  itemType: 2
+  stackable: 0
+  worldPrefab: {fileID: 1034177402202422095, guid: 29711e936444383449d3f35c74680f29, type: 3}
+  equipmentType: 3
   bonusDamage: 0
   bonusDefense: 0
-  bonusHP: 0
-  bonusMP: 0
+  bonusHP: 50
+  bonusMP: 20
   bonusCritChance: 0
   bonusCritDamage: 0
