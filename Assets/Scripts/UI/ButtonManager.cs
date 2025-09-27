@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Unity.VisualScripting;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class ButtonManager : MonoBehaviour
@@ -8,6 +9,10 @@ public class ButtonManager : MonoBehaviour
     [Header("Inventory Buttons")]
     public Button toggleInventoryButton;
     public GameObject inventoryPanel;
+
+    [Header("Inventory Buttons")]
+    public Button toggleInforPlayer;
+    public GameObject inforPlayerPanel;
 
     [Header("Game Control Buttons")]
     public Button startGameButton;
@@ -30,10 +35,16 @@ public class ButtonManager : MonoBehaviour
         else
             Destroy(gameObject);
 
-        SetActivePanel();
     }
 
     private void Start()
+    {
+        SetActive();
+
+        ActiveButton();
+    }
+
+    private void ActiveButton()
     {
         // Gán sự kiện cho các nút
         if (toggleInventoryButton != null)
@@ -45,23 +56,26 @@ public class ButtonManager : MonoBehaviour
         if (quitGameButton != null)
             quitGameButton.onClick.AddListener(QuitGame);
 
-        if(openPausePanelButton != null)
+        if (openPausePanelButton != null)
             openPausePanelButton.onClick.AddListener(OpenPausePanel);
 
         if (closePausePanelButton != null)
             closePausePanelButton.onClick.AddListener(() => pausePanel.SetActive(false));
 
-        if(openAudioSettingPanel != null)
-            openAudioSettingPanel.onClick.AddListener(() =>  audioSettingPanel.SetActive(true));
+        if (openAudioSettingPanel != null)
+            openAudioSettingPanel.onClick.AddListener(() => audioSettingPanel.SetActive(true));
 
-        if(closeAudioSettingPanel != null)
-            closeAudioSettingPanel.onClick.AddListener(() => audioSettingPanel.SetActive(false)) ;
+        if (closeAudioSettingPanel != null)
+            closeAudioSettingPanel.onClick.AddListener(() => audioSettingPanel.SetActive(false));
+
+        if (toggleInforPlayer != null)
+            toggleInforPlayer.onClick.AddListener(() => inforPlayerPanel.SetActive(!inforPlayerPanel.activeSelf));
     }
-
-    private void SetActivePanel()
+    private void SetActive()
     {
         pausePanel.SetActive(false);
         audioSettingPanel.SetActive(false);
+        inforPlayerPanel.SetActive(false);
     }
     private void OpenPausePanel()
     {

@@ -239,8 +239,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2c19eb5e794f6745b50d67c0f72fc04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 0
   healthFillImage: {fileID: 0}
 --- !u!114 &4674695332519672652
 MonoBehaviour:
@@ -254,11 +252,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6ddcd199d4dbfd4192bf7b155048f20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gold: 0
-  hpPotion: 0
-  mpPotion: 0
-  currentWeapon: 
-  currentArmor: 
+  maxSlots: 20
+  items: []
 --- !u!1 &6844191799536418188
 GameObject:
   m_ObjectHideFlags: 0

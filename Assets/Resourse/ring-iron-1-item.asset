@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92d39f4b16d8aa0419ba1ed28ef0fdab, type: 3}
   m_Name: ring-iron-1-item
   m_EditorClassIdentifier: 
-  id: 
-  itemName: 
-  icon: {fileID: 0}
+  id: 3000
+  itemName: "Nh\u1EABn s\u1EAFt"
+  icon: {fileID: -4084398798631049922, guid: 733dbe1c49ab28c428c3a98f0b197a5a, type: 3}
   itemType: 2
   stackable: 1
   worldPrefab: {fileID: 0}

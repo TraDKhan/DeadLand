@@ -32,6 +32,11 @@ public class CharacterStatsUI : MonoBehaviour
         }
         UpdateUI();
     }
+    private void Awake()
+    {
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);
+    }
     public void UpdateUI()
     {
         if (runtimeStats == null)

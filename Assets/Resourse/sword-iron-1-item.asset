@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92d39f4b16d8aa0419ba1ed28ef0fdab, type: 3}
   m_Name: sword-iron-1-item
   m_EditorClassIdentifier: 
-  id: 4
+  id: 1000
   itemName: " Ki\u1EBFm s\u1EAFt I"
   icon: {fileID: 628655927904860856, guid: a3b859f1e2bdaeb408c9ae84a4cfc1f4, type: 3}
   itemType: 2
