@@ -21,6 +21,10 @@ public class PlayerMovement : MonoBehaviour
     private float currentMP;
     private bool isSprinting;
 
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();

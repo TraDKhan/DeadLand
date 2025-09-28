@@ -16,6 +16,10 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private float lastAttackTime;
 
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
     void Start()
     {
         animator = GetComponent<Animator>();

@@ -23,7 +23,7 @@ public class PlayerInteract : MonoBehaviour
         if (npc != null)
         {
             currentNPC = npc;
-            Debug.Log("➡️ Ấn [E] để nói chuyện với " + npc.npcName);
+            Debug.Log("➡️ Ấn [E] để nói chuyện với " + npc.name);
         }
     }
 

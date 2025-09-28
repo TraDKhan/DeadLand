@@ -8,7 +8,10 @@ public class PlayerHealth : MonoBehaviour
 
     public Image healthFillImage;
     private Animator animator;
-
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
     private void Start()
     {
         animator = GetComponent<Animator>();

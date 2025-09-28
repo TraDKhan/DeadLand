@@ -2,16 +2,20 @@
 
 public class NPCController : MonoBehaviour
 {
-    [Header("NPC Info")]
-    public string npcName = "NPC"; // tên NPC hiển thị
-    [TextArea(2, 5)]
-    public string[] dialogueLines;
+    [Header("Dialogue")]
+    public DialogueData dialogueData;
 
     private int currentLine = 0;
     private bool isTalking = false;
 
     public void Interact()
     {
+        if (dialogueData == null || dialogueData.dialogueLines.Length == 0)
+        {
+            Debug.LogWarning("⚠️ NPC chưa gán DialogueData!");
+            return;
+        }
+
         if (!isTalking)
         {
             isTalking = true;
@@ -26,16 +30,19 @@ public class NPCController : MonoBehaviour
 
     private void ShowCurrentLine()
     {
-        if (dialogueLines.Length > 0 && DialogueUI.Instance != null)
+        if (DialogueUI.Instance != null)
         {
-            DialogueUI.Instance.ShowDialogue(npcName, dialogueLines[currentLine]);
+            DialogueUI.Instance.ShowDialogue(
+                dialogueData.npcName,
+                dialogueData.dialogueLines[currentLine]
+            );
         }
     }
 
     private void NextLine()
     {
         currentLine++;
-        if (currentLine < dialogueLines.Length)
+        if (currentLine < dialogueData.dialogueLines.Length)
         {
             ShowCurrentLine();
         }
