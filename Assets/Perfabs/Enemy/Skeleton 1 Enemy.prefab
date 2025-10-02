@@ -456,9 +456,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  patrolPoints:
-  - {fileID: 0}
-  - {fileID: 0}
+  patrolPoints: []
   detectionRange: 3
   chaseSpeed: 5
   patrolSpeed: 3

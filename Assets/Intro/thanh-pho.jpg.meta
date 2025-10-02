@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      thanh-pho_0: -630506543328208428
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

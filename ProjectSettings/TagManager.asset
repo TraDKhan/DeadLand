@@ -9,6 +9,7 @@ TagManager:
   - Skeleton2
   - Enemy
   - Orc
+  - Portal
   layers:
   - Default
   - TransparentFX

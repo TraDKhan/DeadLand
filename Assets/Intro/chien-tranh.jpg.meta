@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      chien-tranh_0: -3116115189189506393
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

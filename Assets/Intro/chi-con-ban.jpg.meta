@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      chi-con-ban_0: 6976365220512508624
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
