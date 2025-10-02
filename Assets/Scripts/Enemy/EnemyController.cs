@@ -29,6 +29,15 @@ public class EnemyController : MonoBehaviour
 
     private Vector2 lastPosition;
 
+    void Awake()
+    {
+        GameObject foundPlayer = GameObject.FindWithTag("Player");
+        if (foundPlayer != null)
+        {
+            player = foundPlayer.transform;
+        }
+    }
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();

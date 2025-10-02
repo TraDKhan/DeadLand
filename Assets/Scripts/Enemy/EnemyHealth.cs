@@ -24,6 +24,11 @@ public class EnemyHealth : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         dropSystem = GetComponent<EnemyDropItem>();
+        GameObject foundPlayer = GameObject.FindWithTag("Player");
+        if (foundPlayer != null)
+        {
+            playerHealth = foundPlayer.GetComponent<PlayerHealth>();
+        }
     }
 
     void Start()

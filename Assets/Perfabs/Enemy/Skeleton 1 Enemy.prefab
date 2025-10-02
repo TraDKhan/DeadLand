@@ -36,7 +36,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0.4}
   m_SizeDelta: {x: 200, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &7666995952021853210
@@ -477,9 +477,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44e239a0434c82c4e82d417f6fcbfc83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 10
   healthFillImage: {fileID: 6500338001146523235}
   enemyDeathClip: {fileID: 8300000, guid: 8b182461e397ff449bbc7b78d7aa36dc, type: 3}
+  expReward: 100
+  playerHealth: {fileID: 0}
   isDead: 0
 --- !u!114 &4858983261581203760
 MonoBehaviour:
@@ -498,11 +500,11 @@ MonoBehaviour:
     chance: 0.9
     minAmount: 5
     maxAmount: 20
-  - itemData: {fileID: 11400000, guid: dd03ac2298483044f91f4d135ec732ef, type: 2}
+  - itemData: {fileID: 11400000, guid: ee8de928163d7634883baecdab4ff8dd, type: 2}
     chance: 0.5
     minAmount: 5
     maxAmount: 10
-  - itemData: {fileID: 11400000, guid: ee8de928163d7634883baecdab4ff8dd, type: 2}
+  - itemData: {fileID: 11400000, guid: dd03ac2298483044f91f4d135ec732ef, type: 2}
     chance: 0.5
     minAmount: 2
     maxAmount: 5

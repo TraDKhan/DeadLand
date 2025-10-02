@@ -7,6 +7,8 @@ TagManager:
   - Ghost
   - Skeleton1
   - Skeleton2
+  - Enemy
+  - Orc
   layers:
   - Default
   - TransparentFX
@@ -46,6 +48,9 @@ TagManager:
     locked: 0
   - name: UI
     uniqueID: 1754774323
+    locked: 0
+  - name: Enemy
+    uniqueID: 3780775429
     locked: 0
   m_RenderingLayers:
   - Default
