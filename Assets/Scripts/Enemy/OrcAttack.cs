@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-public class OrcAttack : MonoBehaviour
+public class OrcAttack : MonoBehaviour, IAttackBehavior
 {
 
     [Header("Orc Attack Settings")]
