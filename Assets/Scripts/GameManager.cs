@@ -10,14 +10,17 @@ public class GameManager : MonoBehaviour
     private GameObject playerInstance;
 
     [Header("Spawn Info")]
-    public string spawnPointName; // tên spawn point để spawn
+    public string spawnPointName;
+
+    [Header("UI")]
+    public GameObject hudCanvas; // HUD Canvas là con của GameManager
 
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(gameObject); // Giữ GameManager + Canvas + các con khi load scene
         }
         else
         {
@@ -30,6 +33,7 @@ public class GameManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        // Spawn player nếu chưa có
         if (playerInstance == null)
         {
             playerInstance = Instantiate(playerPrefab);

@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.UI; // để dùng Image
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Animator))]
@@ -10,10 +9,9 @@ public class PlayerMovement : MonoBehaviour
     public float sprintMultiplier = 1.5f;
 
     [Header("MP Settings")]
-    public float maxMP = 100f;          // MP tối đa
-    public float mpDrainPerSecond = 10f; // lượng MP mất mỗi giây khi chạy nhanh
-    public float mpRegenPerSecond = 5f;  // lượng MP hồi mỗi giây khi không chạy
-    public Image mpBar;                 // thanh MP (Image kiểu Filled)
+    public float maxMP = 100f;
+    public float mpDrainPerSecond = 10f;
+    public float mpRegenPerSecond = 5f;
 
     private Rigidbody2D rb;
     private Animator animator;
@@ -25,11 +23,13 @@ public class PlayerMovement : MonoBehaviour
     {
         DontDestroyOnLoad(gameObject);
     }
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        currentMP = maxMP; // bắt đầu full MP
+        currentMP = maxMP; // full MP khi bắt đầu
+        ManaBarHUD.Instance?.UpdateMP(currentMP, maxMP);
     }
 
     void Update()
@@ -49,8 +49,7 @@ public class PlayerMovement : MonoBehaviour
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
 
-        // Ưu tiên một hướng nếu nhấn cả hai
-        if (x != 0 && y != 0)
+        if (x != 0 && y != 0) // Ưu tiên 1 hướng
         {
             if (Mathf.Abs(x) > Mathf.Abs(y))
                 y = 0;
@@ -60,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
 
         movement = new Vector2(x, y);
 
-        // Kiểm tra Shift để tăng tốc (chỉ nếu còn MP)
+        // Shift để chạy nhanh
         if ((Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) && currentMP > 0)
         {
             movement *= sprintMultiplier;
@@ -86,7 +85,6 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("MoveY", movement.y);
         animator.SetBool("IsMoving", isMoving);
 
-        // Lưu hướng di chuyển cuối cùng (dùng khi Idle)
         if (isMoving)
         {
             animator.SetFloat("LastMoveX", movement.x);
@@ -107,10 +105,7 @@ public class PlayerMovement : MonoBehaviour
             if (currentMP > maxMP) currentMP = maxMP;
         }
 
-        // cập nhật thanh MP
-        if (mpBar != null)
-        {
-            mpBar.fillAmount = currentMP / maxMP;
-        }
+        // Cập nhật UI qua HUD
+        ManaBarHUD.Instance?.UpdateMP(currentMP, maxMP);
     }
 }

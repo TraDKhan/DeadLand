@@ -6,7 +6,6 @@ public class PlayerHealth : MonoBehaviour
     [Header("Stats Template (SO)")]
     private Character runtimeStats; // runtime data
 
-    public Image healthFillImage;
     private Animator animator;
     private void Awake()
     {
@@ -40,9 +39,9 @@ public class PlayerHealth : MonoBehaviour
 
     void UpdateHealthUI()
     {
-        if (healthFillImage != null && runtimeStats != null)
+        if (runtimeStats != null && HealthBarHUD.Instance != null)
         {
-            healthFillImage.fillAmount = (float)runtimeStats.currentHP / runtimeStats.GetTotalMaxHP();
+            HealthBarHUD.Instance.UpdateHealth(runtimeStats.currentHP, runtimeStats.GetTotalMaxHP());
         }
     }
 

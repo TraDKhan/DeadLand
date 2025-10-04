@@ -165,6 +165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 115840433}
   spawnPointName: 
+  hudCanvas: {fileID: 0}
 --- !u!1 &25232371
 GameObject:
   m_ObjectHideFlags: 0
@@ -2164,7 +2165,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &625586196
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2916,7 +2917,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &759726728
 Transform:
   m_ObjectHideFlags: 0
@@ -4105,7 +4106,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1273099955
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4794,7 +4795,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8227339090829482811, guid: 2e1f939422d26334087a2dac4a069d04, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -37163,6 +37164,10 @@ PrefabInstance:
     - target: {fileID: 1168444501391705498, guid: a8dba0cb3fe4058458a522c3d005bded, type: 3}
       propertyPath: m_Name
       value: 'Player '
+      objectReference: {fileID: 0}
+    - target: {fileID: 1168444501391705498, guid: a8dba0cb3fe4058458a522c3d005bded, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1484771324047120291, guid: a8dba0cb3fe4058458a522c3d005bded, type: 3}
       propertyPath: m_LocalPosition.x
