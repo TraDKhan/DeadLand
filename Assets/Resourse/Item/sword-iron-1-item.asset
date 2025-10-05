@@ -17,7 +17,7 @@ MonoBehaviour:
   icon: {fileID: 628655927904860856, guid: a3b859f1e2bdaeb408c9ae84a4cfc1f4, type: 3}
   itemType: 2
   stackable: 0
-  worldPrefab: {fileID: 0}
+  worldPrefab: {fileID: 2839710396678572220, guid: 957695baa5c4c004cab90c5e29e2248d, type: 3}
   equipmentType: 0
   bonusDamage: 10
   bonusDefense: 0

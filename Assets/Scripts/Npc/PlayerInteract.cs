@@ -3,6 +3,7 @@
 public class PlayerInteract : MonoBehaviour
 {
     private NPCController currentNPC;
+    private NPCController1 currentNPC1;
 
     void Update()
     {
@@ -15,6 +16,17 @@ public class PlayerInteract : MonoBehaviour
         {
             currentNPC.EndInteraction();
         }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            if (currentNPC1 != null)
+            {
+                // Ví dụ: lần đầu nói chuyện
+                currentNPC1.StartDialogue("first_meet");
+
+                // Sau này có thể đổi thành quest_done, shop... tùy logic game
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -25,6 +37,13 @@ public class PlayerInteract : MonoBehaviour
             currentNPC = npc;
             Debug.Log("➡️ Ấn [E] để nói chuyện với " + npc.name);
         }
+
+        NPCController1 npc1 = collision.GetComponent<NPCController1>();
+        if (npc1 != null)
+        {
+            currentNPC1 = npc1;
+            Debug.Log("➡️ Ấn [Q] để nói chuyện với " + npc1.name);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -32,6 +51,10 @@ public class PlayerInteract : MonoBehaviour
         if (collision.GetComponent<NPCController>() == currentNPC)
         {
             currentNPC = null;
+        }
+        if (collision.GetComponent<NPCController1>() == currentNPC1)
+        {
+            currentNPC1 = null;
         }
     }
 }

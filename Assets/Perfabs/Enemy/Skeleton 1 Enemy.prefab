@@ -334,8 +334,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -514191867
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -4140121664297061111, guid: 2acdc67ed58db8040ae355f2a7eec169, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -457,11 +457,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   patrolPoints: []
-  detectionRange: 3
-  chaseSpeed: 5
-  patrolSpeed: 3
+  detectionRange: 1.5
+  chaseSpeed: 1.5
+  patrolSpeed: 2
   reachThreshold: 1
-  stopDistance: 1.5
+  stopDistance: 0.65
   patrolWaitTime: 2
 --- !u!114 &2098117833233094624
 MonoBehaviour:
@@ -475,10 +475,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44e239a0434c82c4e82d417f6fcbfc83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
+  maxHealth: 350
   healthFillImage: {fileID: 6500338001146523235}
   enemyDeathClip: {fileID: 8300000, guid: 8b182461e397ff449bbc7b78d7aa36dc, type: 3}
-  expReward: 100
+  expReward: 20
   playerHealth: {fileID: 0}
   isDead: 0
 --- !u!114 &4858983261581203760
@@ -494,18 +494,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropItems:
+  - itemData: {fileID: 11400000, guid: 02f5a13260f63ed44a949238e578af28, type: 2}
+    chance: 0.4
+    minAmount: 1
+    maxAmount: 1
+  - itemData: {fileID: 11400000, guid: ffd17d7f28d8972428e94e41041a2b0e, type: 2}
+    chance: 0.4
+    minAmount: 1
+    maxAmount: 1
+  - itemData: {fileID: 11400000, guid: 84dc3f15114ce4f4bb4d19d7552dcda9, type: 2}
+    chance: 0.1
+    minAmount: 1
+    maxAmount: 1
+  - itemData: {fileID: 11400000, guid: 0636f5430a2f1a649b75558e231a69df, type: 2}
+    chance: 0.1
+    minAmount: 1
+    maxAmount: 1
   - itemData: {fileID: 11400000, guid: 9330b0710eabb284097268e6ae97e627, type: 2}
-    chance: 0.9
-    minAmount: 5
-    maxAmount: 20
-  - itemData: {fileID: 11400000, guid: ee8de928163d7634883baecdab4ff8dd, type: 2}
-    chance: 0.5
-    minAmount: 5
-    maxAmount: 10
+    chance: 0.7
+    minAmount: 15
+    maxAmount: 40
   - itemData: {fileID: 11400000, guid: dd03ac2298483044f91f4d135ec732ef, type: 2}
     chance: 0.5
-    minAmount: 2
-    maxAmount: 5
+    minAmount: 0
+    maxAmount: 2
+  - itemData: {fileID: 11400000, guid: ee8de928163d7634883baecdab4ff8dd, type: 2}
+    chance: 0.5
+    minAmount: 0
+    maxAmount: 2
   spawnRadius: 0.5
 --- !u!114 &5185633918107896385
 MonoBehaviour:
@@ -519,9 +535,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2410f2364aba7e42a2da37fbd92fb76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 1
+  attackRange: 0.6
   attackCooldown: 2
-  damage: 10
+  damage: 20
   playerLayer:
     serializedVersion: 2
     m_Bits: 64

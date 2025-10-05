@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1bd803567faee94a983dbca4d578e55, type: 3}
+  m_Name: Truong-lang
+  m_EditorClassIdentifier: 
+  npcName: 
+  dialogueLines:
+  - "Nh\u01B0 b\u1EA1n \u0111\xE3 ch\u1EE9ng ki\u1EBFn, Th\u1EBF gi\u1EDBi n\xE0y
+    \u0111\xE3 bi\u1EBFn \u0111\u1ED5i"
+  - "Nguy hi\u1EC3m r\xECnh r\u1EADp m\u1ECDi n\u01A1i, qu\xE1i v\u1EADt xu\u1EA5t
+    hi\u1EC7n"
+  - "\u0110\u1EEBng lo l\u1EAFng b\u1EA1n c\xF3 th\u1EC3 n\xE2ng c\u1EA5p s\u1EE9c
+    m\u1EA1nh b\u1EA3n th\xE2n \u0111\u1EC3 sinh t\u1ED3n \u0111\u1EBFn cu\u1ED1i
+    c\xF9ng"
+  - "H\xE3y t\u1EADn d\u1EE5ng c\xE1c t\xE0i nguy\xEAn, v\xE0 ph\xE2n b\u1ED5 s\u1EE9c
+    m\u1EA1nh m\u1ED9t c\xE1ch kh\xF4n ngoan"
+  - "H\xE3y l\xE0m quen v\u1EDBi ng\xF4i l\xE0ng nh\u1ECF n\xE0y"
+  - "[Nhi\u1EC7m v\u1EE5], Tr\xF2 chuy\u1EC7n v\u1EDBi NPC kh\xE1c trong v\xF9ng"

@@ -334,8 +334,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -514191867
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -315613180178207332, guid: 8b990d0833e149946bccda9b5809c1e2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -456,12 +456,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  patrolPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  detectionRange: 3
-  chaseSpeed: 5
-  patrolSpeed: 3
+  patrolPoints: []
+  detectionRange: 4
+  chaseSpeed: 3
+  patrolSpeed: 1
   reachThreshold: 0.2
   stopDistance: 1
   patrolWaitTime: 2
@@ -479,12 +477,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackRange: 1
   attackCooldown: 2
-  damage: 10
+  damage: 25
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
   enableDoT: 1
-  dotDamage: 2
+  dotDamage: 3
   dotDuration: 5
   dotInterval: 1
 --- !u!114 &1522242462351714231
@@ -499,9 +497,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44e239a0434c82c4e82d417f6fcbfc83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 600
   healthFillImage: {fileID: 158965176209083404}
   enemyDeathClip: {fileID: 8300000, guid: 9a40c7e94620f3f4e99cd04d07a43f4e, type: 3}
+  expReward: 30
+  playerHealth: {fileID: 0}
   isDead: 0
 --- !u!114 &5960776036116062223
 MonoBehaviour:
@@ -515,5 +515,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f052c651964e4f6479c6b0510d01c281, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropItems: []
+  dropItems:
+  - itemData: {fileID: 11400000, guid: 02f5a13260f63ed44a949238e578af28, type: 2}
+    chance: 0.4
+    minAmount: 1
+    maxAmount: 1
+  - itemData: {fileID: 11400000, guid: ffd17d7f28d8972428e94e41041a2b0e, type: 2}
+    chance: 0.4
+    minAmount: 1
+    maxAmount: 1
+  - itemData: {fileID: 11400000, guid: 84dc3f15114ce4f4bb4d19d7552dcda9, type: 2}
+    chance: 0.1
+    minAmount: 1
+    maxAmount: 1
+  - itemData: {fileID: 11400000, guid: 0636f5430a2f1a649b75558e231a69df, type: 2}
+    chance: 0.1
+    minAmount: 1
+    maxAmount: 1
+  - itemData: {fileID: 11400000, guid: 9330b0710eabb284097268e6ae97e627, type: 2}
+    chance: 0.7
+    minAmount: 20
+    maxAmount: 60
+  - itemData: {fileID: 11400000, guid: dd03ac2298483044f91f4d135ec732ef, type: 2}
+    chance: 0.5
+    minAmount: 0
+    maxAmount: 2
+  - itemData: {fileID: 11400000, guid: ee8de928163d7634883baecdab4ff8dd, type: 2}
+    chance: 0.5
+    minAmount: 0
+    maxAmount: 2
   spawnRadius: 0.5
