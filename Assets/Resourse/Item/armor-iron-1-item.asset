@@ -16,7 +16,7 @@ MonoBehaviour:
   itemName: "Gi\xE1p s\u1EAFt I"
   icon: {fileID: 21300000, guid: f2057067eea3d1040854cbfb09426ccd, type: 3}
   itemType: 2
-  stackable: 1
+  stackable: 0
   worldPrefab: {fileID: 4921966995159810873, guid: af614989b0fc6ec40b1b5262e4680b0e, type: 3}
   equipmentType: 1
   bonusDamage: 0

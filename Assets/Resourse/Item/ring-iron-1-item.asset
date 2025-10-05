@@ -16,7 +16,7 @@ MonoBehaviour:
   itemName: "Nh\u1EABn s\u1EAFt"
   icon: {fileID: -4084398798631049922, guid: 733dbe1c49ab28c428c3a98f0b197a5a, type: 3}
   itemType: 2
-  stackable: 1
+  stackable: 0
   worldPrefab: {fileID: 5876275185633552605, guid: cb7021d332b79514f8b034384863b58f, type: 3}
   equipmentType: 2
   bonusDamage: 0

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 4000
   itemName: "Nh\u1EABn s\u1EAFt I"
-  icon: {fileID: -4084398798631049922, guid: 733dbe1c49ab28c428c3a98f0b197a5a, type: 3}
+  icon: {fileID: -410549547386187382, guid: 733dbe1c49ab28c428c3a98f0b197a5a, type: 3}
   itemType: 2
   stackable: 0
   worldPrefab: {fileID: 1034177402202422095, guid: 29711e936444383449d3f35c74680f29, type: 3}

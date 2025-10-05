@@ -172,10 +172,11 @@ public class InventoryManager : MonoBehaviour
         if (item.itemData.itemType == ItemType.Equipment)
         {
             character.Equip(item.itemData);
-            Debug.Log($"🔧 Trang bị {item.itemData.itemName} ({item.itemData.equipmentType})");
+            Debug.Log($"EquipItem Trang bị {item.itemData.itemName} ({item.itemData.equipmentType})");
 
             CharacterStatsUI.Instance?.UpdateUI();
             InventoryUI.Instance?.RefreshUI();
+            EquipmentUI.Instance?.UpdateEquipmentUI(character); // 🟢 Cập nhật UI slot
         }
         else
         {
@@ -254,10 +255,11 @@ public class InventoryManager : MonoBehaviour
 
             // Trang bị
             character.Equip(item.itemData);
-            Debug.Log($"🔧 Trang bị {item.itemData.itemName} ({item.itemData.equipmentType})");
+            Debug.Log($"EquipFromUI Trang bị {item.itemData.itemName} ({item.itemData.equipmentType})");
 
             CharacterStatsUI.Instance?.UpdateUI();
             InventoryUI.Instance?.RefreshUI();
+            EquipmentUI.Instance?.UpdateEquipmentUI(character);
         }
         else
         {
