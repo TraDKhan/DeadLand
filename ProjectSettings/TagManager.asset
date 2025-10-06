@@ -10,6 +10,7 @@ TagManager:
   - Enemy
   - Orc
   - Portal
+  - NPC
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - Player
   - Enemy
   - Item
-  - 
+  - NPC
   - 
   - 
   - 

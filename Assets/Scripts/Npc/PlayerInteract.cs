@@ -5,6 +5,11 @@ public class PlayerInteract : MonoBehaviour
     private NPCController currentNPC;
     private NPCController1 currentNPC1;
 
+    [Header("Cấu hình tương tác")]
+    public float interactRange = 2f;
+    public LayerMask npcLayer;
+    private QuestGiver nearbyQuestGiver;
+
     void Update()
     {
         if (currentNPC != null && Input.GetKeyDown(KeyCode.E))
@@ -27,8 +32,30 @@ public class PlayerInteract : MonoBehaviour
                 // Sau này có thể đổi thành quest_done, shop... tùy logic game
             }
         }
+
+        DetectNearbyNPC();
+
+        // Khi nhấn Q
+        if (nearbyQuestGiver != null && Input.GetKeyDown(KeyCode.Q))
+        {
+            nearbyQuestGiver.Interact();
+        }
     }
 
+    private void DetectNearbyNPC()
+    {
+        // Tìm tất cả NPC trong bán kính tương tác
+        Collider2D hit = Physics2D.OverlapCircle(transform.position, interactRange, npcLayer);
+
+        if (hit != null)
+        {
+            nearbyQuestGiver = hit.GetComponent<QuestGiver>();
+        }
+        else
+        {
+            nearbyQuestGiver = null;
+        }
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         NPCController npc = collision.GetComponent<NPCController>();

@@ -265,6 +265,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d620272cfeca2de419d818e1a7f992c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactRange: 2
+  npcLayer:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1 &6844191799536418188
 GameObject:
   m_ObjectHideFlags: 0

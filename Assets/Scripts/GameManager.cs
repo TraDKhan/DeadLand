@@ -15,6 +15,15 @@ public class GameManager : MonoBehaviour
     [Header("UI")]
     public GameObject hudCanvas; // HUD Canvas là con của GameManager
 
+    void Start()
+    {
+        QuestManager.Instance.LoadProgress();
+    }
+    void OnApplicationQuit()
+    {
+        QuestManager.Instance.SaveProgress();
+    }
+
     private void Awake()
     {
         if (Instance == null)

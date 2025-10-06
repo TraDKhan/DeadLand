@@ -10,9 +10,13 @@ public class ButtonManager : MonoBehaviour
     public Button toggleInventoryButton;
     public GameObject inventoryPanel;
 
-    [Header("Inventory Buttons")]
+    [Header("Infor Player Buttons")]
     public Button toggleInforPlayer;
     public GameObject inforPlayerPanel;
+
+    [Header("Quest Buttons")]
+    public Button toggleQuestButton;
+    public GameObject questPanel;
 
     [Header("Game Control Buttons")]
     public Button startGameButton;
@@ -62,20 +66,27 @@ public class ButtonManager : MonoBehaviour
         if (closePausePanelButton != null)
             closePausePanelButton.onClick.AddListener(() => pausePanel.SetActive(false));
 
+        //Audio Panel
         if (openAudioSettingPanel != null)
             openAudioSettingPanel.onClick.AddListener(() => audioSettingPanel.SetActive(true));
 
         if (closeAudioSettingPanel != null)
             closeAudioSettingPanel.onClick.AddListener(() => audioSettingPanel.SetActive(false));
 
+        //Infor Player Panel
         if (toggleInforPlayer != null)
             toggleInforPlayer.onClick.AddListener(() => inforPlayerPanel.SetActive(!inforPlayerPanel.activeSelf));
+        
+        //Quest Panel
+        if (toggleQuestButton != null)
+            toggleQuestButton.onClick.AddListener(() => questPanel.SetActive(!questPanel.activeSelf));
     }
     private void SetActive()
     {
         pausePanel.SetActive(false);
         audioSettingPanel.SetActive(false);
         inforPlayerPanel.SetActive(false);
+        questPanel.SetActive(false);
     }
     private void OpenPausePanel()
     {
