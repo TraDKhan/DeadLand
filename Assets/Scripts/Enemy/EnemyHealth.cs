@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-
+public enum EnemyType { Goblin, Orc, Slime, Skeleton }
 public class EnemyHealth : MonoBehaviour
 {
     [Header("Health Settings")]
@@ -16,6 +16,7 @@ public class EnemyHealth : MonoBehaviour
     public PlayerHealth playerHealth;
 
     [HideInInspector] public bool isDead = false;
+    public EnemyType enemyType;
 
     private Animator animator;
     private EnemyDropItem dropSystem;
@@ -72,6 +73,8 @@ public class EnemyHealth : MonoBehaviour
         EnemyController ec = GetComponent<EnemyController>();
         if (animator != null)
             animator.SetTrigger("Die");
+
+        QuestManager.Instance?.UpdateProgress(enemyType.ToString());
 
         if (playerHealth != null)
         {

@@ -4,6 +4,7 @@ public class QuestGiver : MonoBehaviour
 {
     public string questID;
     public string npcName = "NPC";
+    public string npcID;
     public string[] dialogueBefore;
     public string[] dialogueInProgress;
     public string[] dialogueComplete;
@@ -21,11 +22,18 @@ public class QuestGiver : MonoBehaviour
                     () => QuestManager.Instance.StartQuest(questID), npcName);
                 break;
             case QuestStatus.InProgress:
-                DialogueSystem.Instance.Show(dialogueInProgress, null, npcName);
+                DialogueSystem.Instance.Show(dialogueInProgress, () =>
+                {
+                    // Nếu là nhiệm vụ nói chuyện và đúng NPC -> hoàn thành
+                    if (quest.type == QuestType.Talk && quest.targetID == npcID)
+                    {
+                        QuestManager.Instance.UpdateProgress(npcID);
+                    }
+                });
                 break;
+
             case QuestStatus.Completed:
-                DialogueSystem.Instance.Show(dialogueComplete,
-                    () => QuestManager.Instance.ClaimReward(questID), npcName);
+                DialogueSystem.Instance.Show(dialogueComplete);
                 break;
             case QuestStatus.RewardClaimed:
                 DialogueSystem.Instance.Show(dialogueAfter, null, npcName);

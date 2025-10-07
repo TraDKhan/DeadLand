@@ -33,16 +33,28 @@ public class QuestManager : MonoBehaviour
         {
             if (quest.status == QuestStatus.InProgress && quest.targetID == targetID)
             {
-                progress[quest.questID]++;
-
-                if (progress[quest.questID] >= quest.requiredAmount)
+                if (quest.type == QuestType.Kill)
                 {
+                    progress[quest.questID]++;
+                    Debug.Log($"🪓 Cập nhật nhiệm vụ {quest.title}: {progress[quest.questID]}/{quest.requiredAmount}");
+
+                    if (progress[quest.questID] >= quest.requiredAmount)
+                    {
+                        quest.status = QuestStatus.Completed;
+                        Debug.Log($"✅ Hoàn thành nhiệm vụ: {quest.title}");
+                    }
+                }
+                else if (quest.type == QuestType.Talk)
+                {
+                    // ✅ Nhiệm vụ nói chuyện chỉ cần một lần
                     quest.status = QuestStatus.Completed;
-                    Debug.Log($"✅ Hoàn thành nhiệm vụ: {quest.title}");
+                    progress[quest.questID] = quest.requiredAmount;
+                    Debug.Log($"💬 Hoàn thành nhiệm vụ nói chuyện: {quest.title}");
                 }
             }
         }
     }
+
 
     public void ClaimReward(string questID)
     {

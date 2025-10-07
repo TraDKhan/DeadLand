@@ -483,6 +483,7 @@ MonoBehaviour:
   expReward: 50
   playerHealth: {fileID: 0}
   isDead: 0
+  enemyType: 1
 --- !u!114 &4402857371440454767
 MonoBehaviour:
   m_ObjectHideFlags: 0
