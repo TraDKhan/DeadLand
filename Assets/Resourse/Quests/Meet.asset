@@ -16,8 +16,8 @@ MonoBehaviour:
   title: "G\u1EB7p g\u1EE1 d\xE2n l\xE0ng"
   description: "L\xE0m quen v\u01A1i m\u1ECDi ng\u01B0\u1EDDi trong ng\xF4i l\xE0ng "
   type: 2
-  targetID: talk_person
+  targetID: npc_elder
   requiredAmount: 0
   rewardExp: 50
   rewardGold: 50
-  status: 1
+  status: 3

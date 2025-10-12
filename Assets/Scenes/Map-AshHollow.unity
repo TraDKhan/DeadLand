@@ -167,9 +167,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5447115686917851295, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: damage
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5447115686917851295, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: attackRange
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5447115686917851295, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: attackCooldown
+      value: 1.8
+      objectReference: {fileID: 0}
     - target: {fileID: 7714817220228807108, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: m_Name
       value: Orc Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: chaseSpeed
+      value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: patrolSpeed
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: detectionRange
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: patrolWaitTime
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: 'patrolPoints.Array.data[0]'
@@ -179,6 +207,14 @@ PrefabInstance:
       propertyPath: 'patrolPoints.Array.data[1]'
       value: 
       objectReference: {fileID: 1712603539}
+    - target: {fileID: 8638235677832227708, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: expReward
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8638235677832227708, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: maxHealth
+      value: 200
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -194,7 +230,7 @@ GameObject:
   m_Component:
   - component: {fileID: 10486715}
   m_Layer: 0
-  m_Name: ORC 1
+  m_Name: ORC LEVEL 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -210,16 +246,13 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.48, y: 0.53, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1268393395}
   - {fileID: 1556214540}
   - {fileID: 379340801}
-  - {fileID: 43721511}
   - {fileID: 1759194159}
-  - {fileID: 1937993762}
-  - {fileID: 1569669449}
   m_Father: {fileID: 1960886799}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &15479053
@@ -278,6 +311,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 467624328}
     m_Modifications:
     - target: {fileID: 1254405838312840308, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1254405838312840308, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1254405838312840308, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.6513443
       objectReference: {fileID: 0}
@@ -317,9 +358,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5447115686917851295, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: damage
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5447115686917851295, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: attackRange
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5447115686917851295, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: attackCooldown
+      value: 1.6
+      objectReference: {fileID: 0}
     - target: {fileID: 7714817220228807108, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: m_Name
       value: Orc Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: chaseSpeed
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: patrolSpeed
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: stopDistance
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: patrolWaitTime
+      value: 1.9
       objectReference: {fileID: 0}
     - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: patrolPoints.Array.size
@@ -333,6 +402,14 @@ PrefabInstance:
       propertyPath: 'patrolPoints.Array.data[1]'
       value: 
       objectReference: {fileID: 409637159}
+    - target: {fileID: 8638235677832227708, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: expReward
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 8638235677832227708, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: maxHealth
+      value: 400
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -507,12 +584,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 467624328}
     m_Modifications:
     - target: {fileID: 1254405838312840308, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1254405838312840308, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1254405838312840308, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.283153
+      value: 3.06
       objectReference: {fileID: 0}
     - target: {fileID: 1254405838312840308, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.1143413
+      value: -1.51
       objectReference: {fileID: 0}
     - target: {fileID: 1254405838312840308, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: m_LocalPosition.z
@@ -546,9 +631,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5447115686917851295, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: damage
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5447115686917851295, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: attackRange
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5447115686917851295, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: attackCooldown
+      value: 1.6
+      objectReference: {fileID: 0}
     - target: {fileID: 7714817220228807108, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: m_Name
       value: Orc Enemy (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: chaseSpeed
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: patrolSpeed
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: stopDistance
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: patrolWaitTime
+      value: 1.9
       objectReference: {fileID: 0}
     - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: patrolPoints.Array.size
@@ -562,6 +675,14 @@ PrefabInstance:
       propertyPath: 'patrolPoints.Array.data[1]'
       value: 
       objectReference: {fileID: 464784450}
+    - target: {fileID: 8638235677832227708, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: expReward
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 8638235677832227708, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: maxHealth
+      value: 400
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -775,19 +896,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5447115686917851295, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: damage
-      value: 15
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5447115686917851295, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: attackRange
-      value: 1.275
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5447115686917851295, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: attackCooldown
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: 7714817220228807108, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: m_Name
       value: Orc Enemy (2)
       objectReference: {fileID: 0}
     - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: chaseSpeed
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: patrolSpeed
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: stopDistance
-      value: 1.275
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: detectionRange
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: patrolPoints.Array.size
@@ -801,6 +938,14 @@ PrefabInstance:
       propertyPath: 'patrolPoints.Array.data[1]'
       value: 
       objectReference: {fileID: 463441916}
+    - target: {fileID: 8638235677832227708, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: expReward
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8638235677832227708, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: maxHealth
+      value: 300
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1119,7 +1264,7 @@ GameObject:
   m_Component:
   - component: {fileID: 284854199}
   m_Layer: 0
-  m_Name: ORC 3
+  m_Name: ORC LEVEL 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1190,7 +1335,7 @@ GameObject:
   m_Component:
   - component: {fileID: 332851282}
   m_Layer: 0
-  m_Name: ORC 4
+  m_Name: ORC LEVEL 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1710,9 +1855,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5447115686917851295, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: damage
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5447115686917851295, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: attackRange
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5447115686917851295, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: attackCooldown
+      value: 1.8
+      objectReference: {fileID: 0}
     - target: {fileID: 7714817220228807108, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: m_Name
       value: Orc Enemy (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: chaseSpeed
+      value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: patrolSpeed
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: detectionRange
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: patrolWaitTime
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: patrolPoints.Array.size
@@ -1726,6 +1899,14 @@ PrefabInstance:
       propertyPath: 'patrolPoints.Array.data[1]'
       value: 
       objectReference: {fileID: 552634726}
+    - target: {fileID: 8638235677832227708, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: expReward
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8638235677832227708, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: maxHealth
+      value: 200
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1803,7 +1984,7 @@ GameObject:
   m_Component:
   - component: {fileID: 467624328}
   m_Layer: 0
-  m_Name: ORC 2
+  m_Name: ORC LEVEL 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1948,6 +2129,123 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 488713265}
   m_CullTransparentMesh: 1
+--- !u!1001 &493811842
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 515142412}
+    m_Modifications:
+    - target: {fileID: 1254405838312840308, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1254405838312840308, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1254405838312840308, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1254405838312840308, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 1254405838312840308, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.042070575
+      objectReference: {fileID: 0}
+    - target: {fileID: 1254405838312840308, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1254405838312840308, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1254405838312840308, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1254405838312840308, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1254405838312840308, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1254405838312840308, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1254405838312840308, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5447115686917851295, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: damage
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5447115686917851295, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: attackRange
+      value: 2.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5447115686917851295, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: attackCooldown
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7714817220228807108, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: m_Name
+      value: Orc Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: chaseSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: patrolSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: stopDistance
+      value: 1.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: detectionRange
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: patrolWaitTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: patrolPoints.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: 'patrolPoints.Array.data[0]'
+      value: 
+      objectReference: {fileID: 109790672}
+    - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: 'patrolPoints.Array.data[1]'
+      value: 
+      objectReference: {fileID: 109790672}
+    - target: {fileID: 8638235677832227708, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: expReward
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8638235677832227708, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: maxHealth
+      value: 1000
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
 --- !u!1 &500025057
 GameObject:
   m_ObjectHideFlags: 0
@@ -2102,6 +2400,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 503123095}
   m_CullTransparentMesh: 1
+--- !u!1 &515142411
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 515142412}
+  m_Layer: 0
+  m_Name: ORC BOSS
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &515142412
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 515142411}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.17298266, y: 0.039273635, z: -0.042070575}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1390496178}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &527298952
 GameObject:
   m_ObjectHideFlags: 0
@@ -2863,15 +3193,15 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 10486715}
+    m_TransformParent: {fileID: 796944431}
     m_Modifications:
     - target: {fileID: 1254405838312840308, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.630922
+      value: -8.110922
       objectReference: {fileID: 0}
     - target: {fileID: 1254405838312840308, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.466993
+      value: 1.996993
       objectReference: {fileID: 0}
     - target: {fileID: 1254405838312840308, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2905,9 +3235,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5447115686917851295, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: attackRange
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 7714817220228807108, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: m_Name
       value: Orc Enemy (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: stopDistance
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: patrolPoints.Array.size
@@ -2921,6 +3259,10 @@ PrefabInstance:
       propertyPath: 'patrolPoints.Array.data[1]'
       value: 
       objectReference: {fileID: 1563066521}
+    - target: {fileID: 8638235677832227708, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: expReward
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3108,9 +3450,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5447115686917851295, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: damage
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5447115686917851295, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: attackRange
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5447115686917851295, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: attackCooldown
+      value: 1.8
+      objectReference: {fileID: 0}
     - target: {fileID: 7714817220228807108, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: m_Name
       value: Orc Enemy (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: chaseSpeed
+      value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: patrolSpeed
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: detectionRange
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: patrolWaitTime
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: patrolPoints.Array.size
@@ -3124,6 +3494,14 @@ PrefabInstance:
       propertyPath: 'patrolPoints.Array.data[1]'
       value: 
       objectReference: {fileID: 1413320568}
+    - target: {fileID: 8638235677832227708, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: expReward
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8638235677832227708, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: maxHealth
+      value: 200
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3272,6 +3650,40 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &796944430
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 796944431}
+  m_Layer: 0
+  m_Name: ORC LEVEL 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &796944431
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 796944430}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 43721511}
+  - {fileID: 1937993762}
+  - {fileID: 1569669449}
+  m_Father: {fileID: 1960886799}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &817920221
 GameObject:
   m_ObjectHideFlags: 0
@@ -3726,19 +4138,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5447115686917851295, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: damage
-      value: 15
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5447115686917851295, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: attackRange
-      value: 1.275
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5447115686917851295, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: attackCooldown
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: 7714817220228807108, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: m_Name
       value: Orc Enemy (1)
       objectReference: {fileID: 0}
     - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: chaseSpeed
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: patrolSpeed
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: stopDistance
-      value: 1.275
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: detectionRange
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: patrolPoints.Array.size
@@ -3752,6 +4180,14 @@ PrefabInstance:
       propertyPath: 'patrolPoints.Array.data[1]'
       value: 
       objectReference: {fileID: 362747275}
+    - target: {fileID: 8638235677832227708, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: expReward
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8638235677832227708, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: maxHealth
+      value: 300
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3908,6 +4344,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 467624328}
     m_Modifications:
     - target: {fileID: 1254405838312840308, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1254405838312840308, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1254405838312840308, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.6384993
       objectReference: {fileID: 0}
@@ -3947,9 +4391,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5447115686917851295, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: damage
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5447115686917851295, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: attackRange
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5447115686917851295, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: attackCooldown
+      value: 1.6
+      objectReference: {fileID: 0}
     - target: {fileID: 7714817220228807108, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: m_Name
       value: Orc Enemy (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: chaseSpeed
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: patrolSpeed
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: stopDistance
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: patrolWaitTime
+      value: 1.9
       objectReference: {fileID: 0}
     - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: patrolPoints.Array.size
@@ -3963,6 +4435,14 @@ PrefabInstance:
       propertyPath: 'patrolPoints.Array.data[1]'
       value: 
       objectReference: {fileID: 1472700704}
+    - target: {fileID: 8638235677832227708, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: expReward
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 8638235677832227708, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: maxHealth
+      value: 400
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4445,19 +4925,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5447115686917851295, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: damage
-      value: 20
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 5447115686917851295, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: attackRange
-      value: 1.7
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5447115686917851295, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: attackCooldown
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 7714817220228807108, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: m_Name
       value: Orc Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: chaseSpeed
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: patrolSpeed
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: stopDistance
-      value: 1.7
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: patrolWaitTime
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: patrolPoints.Array.size
@@ -4471,6 +4967,10 @@ PrefabInstance:
       propertyPath: 'patrolPoints.Array.data[1]'
       value: 
       objectReference: {fileID: 109790672}
+    - target: {fileID: 8638235677832227708, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: maxHealth
+      value: 500
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4608,9 +5108,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5447115686917851295, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: damage
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5447115686917851295, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: attackRange
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5447115686917851295, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: attackCooldown
+      value: 1.8
+      objectReference: {fileID: 0}
     - target: {fileID: 7714817220228807108, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: m_Name
       value: Orc Enemy 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: chaseSpeed
+      value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: patrolSpeed
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: detectionRange
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: patrolWaitTime
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: patrolPoints.Array.size
@@ -4624,6 +5152,14 @@ PrefabInstance:
       propertyPath: 'patrolPoints.Array.data[1]'
       value: 
       objectReference: {fileID: 693629860}
+    - target: {fileID: 8638235677832227708, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: expReward
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8638235677832227708, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: maxHealth
+      value: 200
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4687,19 +5223,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5447115686917851295, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: damage
-      value: 20
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 5447115686917851295, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: attackRange
-      value: 1.7
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5447115686917851295, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: attackCooldown
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 7714817220228807108, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: m_Name
       value: Orc Enemy (1)
       objectReference: {fileID: 0}
     - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: chaseSpeed
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: patrolSpeed
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: stopDistance
-      value: 1.7
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: patrolWaitTime
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: patrolPoints.Array.size
@@ -4713,6 +5265,10 @@ PrefabInstance:
       propertyPath: 'patrolPoints.Array.data[1]'
       value: 
       objectReference: {fileID: 743673215}
+    - target: {fileID: 8638235677832227708, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: maxHealth
+      value: 500
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4724,15 +5280,15 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 10486715}
+    m_TransformParent: {fileID: 796944431}
     m_Modifications:
     - target: {fileID: 1254405838312840308, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.944299
+      value: -5.4242992
       objectReference: {fileID: 0}
     - target: {fileID: 1254405838312840308, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.3325129
+      value: -0.8025129
       objectReference: {fileID: 0}
     - target: {fileID: 1254405838312840308, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4766,9 +5322,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5447115686917851295, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: attackRange
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 7714817220228807108, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: m_Name
       value: Orc Enemy (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: stopDistance
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: patrolPoints.Array.size
@@ -4782,6 +5346,10 @@ PrefabInstance:
       propertyPath: 'patrolPoints.Array.data[1]'
       value: 
       objectReference: {fileID: 1741542824}
+    - target: {fileID: 8638235677832227708, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: expReward
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4796,6 +5364,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 1254405838312840308, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
   m_PrefabInstance: {fileID: 95820620}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1390496178 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1254405838312840308, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+  m_PrefabInstance: {fileID: 493811842}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1400922164
 GameObject:
@@ -5125,6 +5698,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 467624328}
     m_Modifications:
     - target: {fileID: 1254405838312840308, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1254405838312840308, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1254405838312840308, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.3595924
       objectReference: {fileID: 0}
@@ -5164,9 +5745,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5447115686917851295, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: damage
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5447115686917851295, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: attackRange
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5447115686917851295, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: attackCooldown
+      value: 1.6
+      objectReference: {fileID: 0}
     - target: {fileID: 7714817220228807108, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: m_Name
       value: Orc Enemy (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: chaseSpeed
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: patrolSpeed
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: stopDistance
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: patrolWaitTime
+      value: 1.9
       objectReference: {fileID: 0}
     - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: patrolPoints.Array.size
@@ -5180,6 +5789,14 @@ PrefabInstance:
       propertyPath: 'patrolPoints.Array.data[1]'
       value: 
       objectReference: {fileID: 261557596}
+    - target: {fileID: 8638235677832227708, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: expReward
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 8638235677832227708, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: maxHealth
+      value: 400
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -37380,7 +37997,7 @@ Transform:
   m_GameObject: {fileID: 1697810363}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.95, y: -5.42, z: 0}
+  m_LocalPosition: {x: -2.82, y: -2.17, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -37409,15 +38026,15 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 10486715}
+    m_TransformParent: {fileID: 796944431}
     m_Modifications:
     - target: {fileID: 1254405838312840308, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.337425
+      value: -7.8174253
       objectReference: {fileID: 0}
     - target: {fileID: 1254405838312840308, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.11337334
+      value: 0.41662663
       objectReference: {fileID: 0}
     - target: {fileID: 1254405838312840308, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: m_LocalPosition.z
@@ -37451,9 +38068,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5447115686917851295, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: attackRange
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 7714817220228807108, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: m_Name
       value: Orc Enemy (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: stopDistance
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: patrolPoints.Array.size
@@ -37467,6 +38092,10 @@ PrefabInstance:
       propertyPath: 'patrolPoints.Array.data[1]'
       value: 
       objectReference: {fileID: 25232372}
+    - target: {fileID: 8638235677832227708, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: expReward
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -38048,11 +38677,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5447115686917851295, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: damage
-      value: 15
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5447115686917851295, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: attackRange
-      value: 1.275
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5447115686917851295, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: attackCooldown
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: 7714817220228807108, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: m_Name
@@ -38063,8 +38696,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: chaseSpeed
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: patrolSpeed
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: stopDistance
-      value: 1.275
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: detectionRange
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 8112464851891365194, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
       propertyPath: patrolPoints.Array.size
@@ -38078,6 +38723,14 @@ PrefabInstance:
       propertyPath: 'patrolPoints.Array.data[1]'
       value: 
       objectReference: {fileID: 1914216598}
+    - target: {fileID: 8638235677832227708, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: expReward
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8638235677832227708, guid: 7a84abd287b30a4428b2d10cd121cb75, type: 3}
+      propertyPath: maxHealth
+      value: 300
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -38232,6 +38885,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 796944431}
   - {fileID: 10486715}
   - {fileID: 284854199}
   - {fileID: 467624328}
@@ -38593,3 +39247,4 @@ SceneRoots:
   - {fileID: 759726728}
   - {fileID: 1717855723}
   - {fileID: 1960886799}
+  - {fileID: 515142412}

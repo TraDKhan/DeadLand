@@ -1,20 +1,31 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
+    public static PlayerHealth Instance;
     [Header("Stats Template (SO)")]
-    private Character runtimeStats; // runtime data
-
+    private Character runtimeStats;
+    
     private Animator animator;
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
     private void Start()
     {
         animator = GetComponent<Animator>();
         runtimeStats = PlayerStatsManager.Instance.GetRuntimeStats();
+        UpdateHealthUI();
     }
 
     public void TakeDamage(int damage)
@@ -30,6 +41,7 @@ public class PlayerHealth : MonoBehaviour
         PopupTextManager.Instance.ShowDamage(finalDamage, transform.position + Vector3.up * 0.5f);
 
         UpdateHealthUI();
+        CharacterStatsUI.Instance.UpdateUI();
 
         if (runtimeStats.currentHP <= 0)
         {
@@ -37,7 +49,7 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    void UpdateHealthUI()
+    public void UpdateHealthUI()
     {
         if (runtimeStats != null && HealthBarHUD.Instance != null)
         {

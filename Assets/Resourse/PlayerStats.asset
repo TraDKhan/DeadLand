@@ -13,14 +13,11 @@ MonoBehaviour:
   m_Name: PlayerStats
   m_EditorClassIdentifier: 
   characterName: AX
-  level: 1
-  exp: 50
-  expToNextLevel: 100
-  damage: 10
-  defense: 5
-  maxHP: 100
-  currentHP: 100
-  maxMP: 50
-  currentMP: 50
-  critChance: 0.24
-  critDamage: 1.5
+  baseLevel: 1
+  baseExpToNextLevel: 100
+  baseDamage: 10
+  baseDefense: 5
+  baseMaxHP: 100
+  baseMaxMP: 50
+  baseCritChance: 0.1
+  baseCritDamage: 1.5

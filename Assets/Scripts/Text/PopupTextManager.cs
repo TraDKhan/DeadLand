@@ -66,4 +66,9 @@ public class PopupTextManager : MonoBehaviour
     {
         ShowText($"+{exp} Exp", worldPos + Vector3.right * 0.2f, Color.green, 1.2f);
     }
+
+    public void ShowHeal(int healedAmount, Vector3 worldPos)
+    {
+        ShowText($"+{healedAmount} Exp", worldPos + Vector3.right * 0.2f, Color.green, 1.3f);
+    }
 }

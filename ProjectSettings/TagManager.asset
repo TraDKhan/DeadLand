@@ -11,6 +11,7 @@ TagManager:
   - Orc
   - Portal
   - NPC
+  - Soldier
   layers:
   - Default
   - TransparentFX

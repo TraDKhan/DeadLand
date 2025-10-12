@@ -63,12 +63,12 @@ public class PlayerController : MonoBehaviour
             if (isCrit)
             {
                 damage = Mathf.RoundToInt(damage * runtimeStats.GetTotalCritDamage());
-                PopupTextManager.Instance.ShowDamageCrit(damage, enemy.transform.position);
-                Debug.Log("🔥 Chí mạng!");
+                PopupTextManager.Instance.ShowDamageCrit(damage, enemy.transform.position);                
             }
             else
             {
                 PopupTextManager.Instance.ShowDamage(damage, enemy.transform.position);
+                Debug.Log("gây " + damage);
             }
 
             enemy.GetComponent<EnemyHealth>()?.TakeDamage(damage);

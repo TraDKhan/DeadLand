@@ -23,5 +23,5 @@ MonoBehaviour:
   bonusDefense: 0
   bonusHP: 0
   bonusMP: 0
-  bonusCritChance: 5
-  bonusCritDamage: 10
+  bonusCritChance: 0.05
+  bonusCritDamage: 0.1

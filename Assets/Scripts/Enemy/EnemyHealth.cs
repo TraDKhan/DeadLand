@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-public enum EnemyType { Goblin, Orc, Slime, Skeleton }
+public enum EnemyType { Goblin, Orc, Slime, Soldier, Skeleton }
 public class EnemyHealth : MonoBehaviour
 {
     [Header("Health Settings")]
@@ -45,8 +45,6 @@ public class EnemyHealth : MonoBehaviour
         currentHealth -= damage;
 
         UpdateHealthUI();
-
-        
 
         if (animator != null)
             animator.SetTrigger("Hurt");

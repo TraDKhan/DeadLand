@@ -164,7 +164,6 @@ public class InventoryManager : MonoBehaviour
     // ===========================
 
     // 🟢 Trang bị item từ inventory
-    // 🟢 Trang bị item từ inventory
     public void EquipItem(InventoryItem item, Character character)
     {
         if (item == null || item.itemData == null) return;
@@ -277,7 +276,8 @@ public class InventoryManager : MonoBehaviour
 
         if (item.itemData.itemType == ItemType.Potion)
         {
-            // Giảm số lượng
+            PlayerStatsManager.Instance.GetRuntimeStats().UsePotion(item.itemData);
+
             if (item.amount > 1)
             {
                 item.amount -= 1;
@@ -285,17 +285,14 @@ public class InventoryManager : MonoBehaviour
             else
             {
                 items.Remove(item);
+                InventoryUI.Instance.selectedItem = null; // tránh giữ tham chiếu tới item đã xóa
             }
 
-            // Log
-            Debug.Log($"🍷 Đã dùng {item.itemData.itemName} (còn lại {item.amount})");
-
-            // Cập nhật UI
+            CharacterStatsUI.Instance?.UpdateUI();
+            PlayerHealth.Instance?.UpdateHealthUI();
             InventoryUI.Instance?.RefreshUI();
-        }
-        else
-        {
-            Debug.LogWarning($"❌ {item.itemData.itemName} không phải là potion để dùng!");
+
+            Debug.Log($"🍷 Đã dùng {item.itemData.itemName} (còn lại {item.amount})");
         }
     }
 

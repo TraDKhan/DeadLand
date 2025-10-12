@@ -1,5 +1,6 @@
-﻿using UnityEngine;
-
+﻿using System.IO;
+using UnityEditor.Overlays;
+using UnityEngine;
 public class Character
 {
     private CharacterStatsData template;
@@ -75,6 +76,7 @@ public class Character
         currentHP = maxHP;
         currentMP = maxMP;
 
+        CharacterStatsUI.Instance?.UpdateUI();
         Debug.Log($"{characterName} đã lên cấp {level}!");
     }
 
@@ -162,5 +164,22 @@ public class Character
             case EquipmentType.Ring: ring = null; break;
             case EquipmentType.Necklace: necklace = null; break;
         }
+    }
+
+    // ===== Sử dụng bình HP /MP =====
+    public void UsePotion(ItemData item)
+    {
+        if (item == null || item.itemType != ItemType.Potion) return;
+
+        // Chỉ hồi HP
+        int maxHP = GetTotalMaxHP();
+        int beforeHP = currentHP;
+        currentHP = Mathf.Min(currentHP + 30, maxHP);
+
+        int healedAmount = currentHP - beforeHP;
+        Debug.Log($"🧪 Dùng bình HP: +{healedAmount} HP");
+
+        // Hiệu ứng hồi máu (nếu có)
+        PopupTextManager.Instance?.ShowHeal(healedAmount, Vector3.up + Vector3.forward);
     }
 }

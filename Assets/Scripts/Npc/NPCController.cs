@@ -5,57 +5,39 @@ public class NPCController : MonoBehaviour
     [Header("Dialogue")]
     public DialogueData dialogueData;
 
-    private int currentLine = 0;
     private bool isTalking = false;
 
     public void Interact()
     {
-        if (dialogueData == null || dialogueData.dialogueLines.Length == 0)
+        if (dialogueData == null || dialogueData.dialogueLines == null || dialogueData.dialogueLines.Length == 0)
         {
-            Debug.LogWarning("⚠️ NPC chưa gán DialogueData!");
+            Debug.LogWarning($"⚠️ NPC {name} chưa gán DialogueData hoặc trống!");
             return;
         }
 
-        if (!isTalking)
+        // Nếu đang nói, chuyển sang câu tiếp (nếu DialogueSystem hỗ trợ)
+        if (isTalking)
         {
-            isTalking = true;
-            currentLine = 0;
-            ShowCurrentLine();
+            if (DialogueSystem.Instance != null)
+                DialogueSystem.Instance.NextLine();
+            return;
         }
-        else
-        {
-            NextLine();
-        }
-    }
 
-    private void ShowCurrentLine()
-    {
-        if (DialogueUI.Instance != null)
+        // Bắt đầu hội thoại
+        isTalking = true;
+
+        if (DialogueSystem.Instance != null)
         {
-            DialogueUI.Instance.ShowDialogue(
-                dialogueData.npcName,
-                dialogueData.dialogueLines[currentLine]
+            DialogueSystem.Instance.Show(
+                dialogueData.dialogueLines,
+                EndInteraction,                      // callback khi kết thúc hội thoại
+                dialogueData.npcName                 // tên NPC
             );
         }
     }
 
-    private void NextLine()
-    {
-        currentLine++;
-        if (currentLine < dialogueData.dialogueLines.Length)
-        {
-            ShowCurrentLine();
-        }
-        else
-        {
-            EndInteraction();
-        }
-    }
-
-    public void EndInteraction()
+    private void EndInteraction()
     {
         isTalking = false;
-        if (DialogueUI.Instance != null)
-            DialogueUI.Instance.HideDialogue();
     }
 }
