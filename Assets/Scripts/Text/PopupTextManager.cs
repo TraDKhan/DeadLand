@@ -15,7 +15,6 @@ public class PopupTextManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
             SceneManager.sceneLoaded += OnSceneLoaded; // lắng nghe khi scene mới load
         }
         else

@@ -34,13 +34,11 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         QuestManager.Instance?.LoadProgress();
-        PlayerStatsManager.Instance?.LoadStats();
     }
 
     void OnApplicationQuit()
     {
         QuestManager.Instance?.SaveProgress();
-        PlayerStatsManager.Instance?.SaveStats();
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)

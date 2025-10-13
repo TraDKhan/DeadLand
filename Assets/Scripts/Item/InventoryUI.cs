@@ -24,9 +24,16 @@ public class InventoryUI : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject); // Hủy bản trùng lặp
+            return;
+        }
+
         Instance = this;
         gameObject.SetActive(false);
     }
+
 
     private void Start()
     {
@@ -78,7 +85,6 @@ public class InventoryUI : MonoBehaviour
             equipText.text = "Sử dụng";
         Debug.Log($"📦 Đã chọn item: {item.itemData.itemName}");
     }
-
     public void ToggleInventoryPanel()
     {
         gameObject.SetActive(!gameObject.activeSelf);

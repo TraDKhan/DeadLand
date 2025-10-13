@@ -13,7 +13,7 @@ public class IntroManager : MonoBehaviour
     public float typeSpeed = 0.05f;   // Tốc độ chữ hiện
 
     [Header("Scene Settings")]
-    public string nextScene = "MainGame";
+    public string nextScene = "Start Scene";
 
     [Header("Logo cuối")]
     public Image gameLogo;            // Logo game cuối cùng

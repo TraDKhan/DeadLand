@@ -20,7 +20,6 @@ public class PlayerStatsManager : MonoBehaviour
         }
 
         Instance = this;
-        DontDestroyOnLoad(gameObject);
 
         savePath = Path.Combine(Application.persistentDataPath, "playerStats.json");
 

@@ -113,7 +113,7 @@ public class InventoryManager : MonoBehaviour
         InventoryUI.Instance.RefreshUI();
     }
     //============= XU LY ITEM ===========//
-    private void DropOneSelected()
+    public void DropOneSelected()
     {
         if (InventoryUI.Instance.selectedItem == null)
         {
@@ -122,7 +122,11 @@ public class InventoryManager : MonoBehaviour
         }
 
         InventoryItem selected = InventoryUI.Instance.selectedItem;
-        Vector3 dropPos = transform.position + transform.right * 1f;
+
+        GameObject player = GameObject.FindWithTag("Player");
+        float radius = 1.5f;
+        Vector2 randomCircle = Random.insideUnitCircle.normalized * radius;
+        Vector3 dropPos = player.transform.position + new Vector3(randomCircle.x, 0, randomCircle.y);
 
         DropItem(selected.itemData, 1, dropPos);
         Debug.Log($"Đã vứt 1 {selected.itemData.itemName}");
